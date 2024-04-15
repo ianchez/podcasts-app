@@ -1,4 +1,4 @@
-const HomeScreen = () => {
+const HomeScreen: () => JSX.Element = () => {
   return (
     <div className="screen">
       <p>
@@ -12,7 +12,7 @@ const HomeScreen = () => {
         Learn React
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default HomeScreen;
+export default HomeScreen
