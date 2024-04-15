@@ -1,7 +1,16 @@
 # podcasts-app-ts
 React / Typescript SPA - Showing the latest popular podcasts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+
+This is a simple React / Typescript SPA that shows the latest popular podcasts in iTunes.
+The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json) to fetch the data.
+
+## Installation
+1. Clone the repository
+2. You need **Node.js** installed. I recommend using NVM [github repository](https://github.com/nvm-sh/nvm)
+3. Make sure you have **yarn** configured. If not, check the [yarn getting-started guide](https://yarnpkg.com/getting-started)
+4. Run `yarn install` to install the dependencies
 
 ## Available Scripts
 
