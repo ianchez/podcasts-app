@@ -4,6 +4,12 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 
 import {
+  QueryClient,
+  QueryClientProvider
+} from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom'
@@ -33,6 +39,8 @@ const routes = [
   }
 ]
 
+const queryClient = new QueryClient()
+
 const router = createBrowserRouter(routes)
 
 const rootElement = document.getElementById('root')
@@ -45,7 +53,10 @@ const root = ReactDOM.createRoot(rootElement)
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen />
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 )
 
