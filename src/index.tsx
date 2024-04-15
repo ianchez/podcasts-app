@@ -10,6 +10,7 @@ import {
 
 // screens
 import NotFoundScreen from './screens/NotFoundScreen'
+import RootLayout from './screens/RootLayout'
 import HomeScreen from './screens/HomeScreen'
 import ErrorScreen from './screens/ErrorScreen'
 
@@ -17,12 +18,18 @@ import ErrorScreen from './screens/ErrorScreen'
 const routes = [
   {
     path: '/',
-    element: <HomeScreen />,
-    errorElement: <ErrorScreen />
-  },
-  {
-    path: '*',
-    element: <NotFoundScreen />
+    element: <RootLayout />,
+    errorElement: <ErrorScreen />,
+    children: [
+      {
+        path: '/',
+        element: <HomeScreen />
+      },
+      {
+        path: '*',
+        element: <NotFoundScreen />
+      }
+    ]
   }
 ]
 
