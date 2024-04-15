@@ -24,3 +24,7 @@ code {
 #root {
   width: 100%;
 }
+
+.pressable:hover {
+  cursor: pointer;
+}
