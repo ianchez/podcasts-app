@@ -3,6 +3,7 @@
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js'
+import pluginReactQuery from '@tanstack/eslint-plugin-query'
 
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -27,6 +28,7 @@ export default [
       globals: globals.browser
     },
     ...pluginReactConfig,
+    ...pluginReactQuery.configs.recommended,
 
     rules: {
       // Add your own rules here
