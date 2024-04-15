@@ -1,6 +1,4 @@
-const PODCASTS_URL = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
-const PODCAST_DETAIL_URL = (id: string, limit = 20): string =>
-    `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=${limit}`
+import { PODCASTS_URL, PODCAST_DETAIL_URL } from '../constants/api'
 
 class ApiService {
   static async getData(url: string): Promise<any> {
