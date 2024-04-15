@@ -11,12 +11,14 @@ import {
 // screens
 import NotFoundScreen from './screens/NotFoundScreen'
 import HomeScreen from './screens/HomeScreen'
+import ErrorScreen from './screens/ErrorScreen'
 
 // TODO: Move this to a separate file
 const routes = [
   {
     path: '/',
-    element: <HomeScreen />
+    element: <HomeScreen />,
+    errorElement: <ErrorScreen />
   },
   {
     path: '*',
