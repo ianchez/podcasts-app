@@ -15,8 +15,8 @@ const HomeScreen: React.FC = () => {
 
   return (
     <div className="screen">
-      <div className='row'>
-        <p>100</p>
+      <div className='row end'>
+        <p>{podcasts.length}</p>
         <input
           type='text'
           placeholder='Filter podcasts...'
