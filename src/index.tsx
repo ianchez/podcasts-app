@@ -20,6 +20,7 @@ import PodcastsProvider from './contexts/podcasts'
 import NotFoundScreen from './screens/NotFoundScreen'
 import RootLayout from './screens/RootLayout'
 import HomeScreen from './screens/HomeScreen'
+import PodcastDetailScreen from './screens/PodcastDetailScreen'
 import ErrorScreen from './screens/ErrorScreen'
 
 // TODO: Move this to a separate file
@@ -32,6 +33,10 @@ const routes = [
       {
         path: '/',
         element: <HomeScreen />
+      },
+      {
+        path: '/podcast/:id',
+        element: <PodcastDetailScreen />
       },
       {
         path: '*',
