@@ -1,5 +1,7 @@
+import { Podcast } from "../../constants/types";
+
 type PodcastListProps = {
-  podcasts: any[];
+  podcasts: Podcast[];
   filter: string;
 }
 

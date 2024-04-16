@@ -14,6 +14,8 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
+import PodcastsProvider from './contexts/podcasts'
+
 // screens
 import NotFoundScreen from './screens/NotFoundScreen'
 import RootLayout from './screens/RootLayout'
@@ -55,7 +57,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen />
-      <RouterProvider router={router} />
+      <PodcastsProvider>
+        <RouterProvider router={router} />
+      </PodcastsProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )

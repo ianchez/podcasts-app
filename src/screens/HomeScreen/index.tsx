@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react'
-import usePodcasts from '../../hooks/usePodcasts'
+import { useContext, useState } from 'react'
+import { PodcastsContext } from '../../contexts/podcasts'
 
 import PodcastsList from '../../components/PodcastsList'
 
 const HomeScreen: React.FC = () => {
-  const { isLoading, data } = usePodcasts();
+  const { isLoading, podcasts } = useContext(PodcastsContext);
   const [filter, setFilter] = useState('');
-  const podcasts = data?.feed.entry || [];
 
   const onFilterChange = (
     {target}: React.ChangeEvent<HTMLInputElement>
