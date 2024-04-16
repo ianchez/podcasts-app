@@ -4,7 +4,7 @@ import { Podcast } from "../../constants/types";
 type PodcastListProps = {
   podcasts: Podcast[];
   filter: string;
-}
+};
 
 const PodcastList: React.FC<PodcastListProps> = ({
   podcasts,
@@ -32,7 +32,7 @@ const PodcastList: React.FC<PodcastListProps> = ({
         );
       })}
     </ul>
-  )
+  );
 }
 
 export default PodcastList;

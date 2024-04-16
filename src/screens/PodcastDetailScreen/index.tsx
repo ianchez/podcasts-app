@@ -19,4 +19,4 @@ const PodcastDetailScreen = () => {
   );
 }
 
-export default PodcastDetailScreen
+export default PodcastDetailScreen;

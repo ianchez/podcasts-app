@@ -11,7 +11,7 @@ const ErrorScreen = () => {
         <i>{statusText ?? message}</i>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorScreen
+export default ErrorScreen;

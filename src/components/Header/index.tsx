@@ -1,11 +1,11 @@
-import './index.css'
-import { useNavigate } from 'react-router-dom'
+import './index.css';
+import { useNavigate } from 'react-router-dom';
 
 const Header: () => JSX.Element = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleLogoClick: () => void = () => {
     navigate('/')
-  }
+  };
 
   return (
     <div className='header'>
@@ -16,7 +16,7 @@ const Header: () => JSX.Element = () => {
           Podcaster
       </h5>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

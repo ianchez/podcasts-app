@@ -3,7 +3,7 @@ type Image = {
   attributes: {
     height: string;
   }
-}
+};
 
 export type Podcast = {
   'im:artist': {
@@ -54,4 +54,4 @@ export type Podcast = {
   rights: { label: string };
   summary: { label: string };
   title: { label: string };
-}
+};

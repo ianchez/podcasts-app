@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react'
-import { PodcastsContext } from '../../contexts/podcasts'
+import { useContext, useState } from 'react';
+import { PodcastsContext } from '../../contexts/podcasts';
 
-import PodcastsList from '../../components/PodcastsList'
+import PodcastsList from '../../components/PodcastsList';
 
 const HomeScreen: React.FC = () => {
   const { isLoading, podcasts } = useContext(PodcastsContext);
@@ -11,7 +11,7 @@ const HomeScreen: React.FC = () => {
     {target}: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFilter(target.value);
-  }
+  };
 
   return (
     <div className="screen">
@@ -30,7 +30,7 @@ const HomeScreen: React.FC = () => {
         : <PodcastsList podcasts={podcasts} filter={filter} />
       }
     </div>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

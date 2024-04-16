@@ -10,7 +10,7 @@ type podcastsState = {
   podcastDetail: any;
   episodes: any[];
   setPodcastId: (id: string) => void;
-}
+};
 
 const DEFAULT_STATE: podcastsState = {
   isLoading: true,
@@ -18,13 +18,13 @@ const DEFAULT_STATE: podcastsState = {
   podcastDetail: null,
   episodes: [],
   setPodcastId: () => {},
-}
+};
 
 export const PodcastsContext = createContext(DEFAULT_STATE);
 
 type PodcastsProviderProps = {
   children: React.ReactNode;
-}
+};
 
 export const PodcastsProvider = ({ children }: PodcastsProviderProps) => {
   const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
