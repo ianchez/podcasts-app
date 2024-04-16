@@ -3,7 +3,7 @@ import './index.css'
 
 import Header from '../../components/Header'
 
-const RootLayout: () => JSX.Element = () => {
+const RootLayout = () => {
   return (
     <div className='layout'>
       <Header />

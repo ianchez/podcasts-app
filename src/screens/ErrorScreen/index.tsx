@@ -1,6 +1,6 @@
 import { useRouteError } from 'react-router-dom'
 
-const ErrorScreen: () => JSX.Element = () => {
+const ErrorScreen = () => {
   const { statusText, message } = useRouteError() as any
 
   return (
