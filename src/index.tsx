@@ -23,6 +23,10 @@ import HomeScreen from './screens/HomeScreen';
 import PodcastDetailScreen from './screens/PodcastDetailScreen';
 import ErrorScreen from './screens/ErrorScreen';
 
+// sections
+import EpisodesListSection from './components/EpisodesListSection';
+import EpisodeDetailSection from './components/EpisodeDetailSection';
+
 // TODO: Move this to a separate file
 const routes = [
   {
@@ -36,7 +40,17 @@ const routes = [
       },
       {
         path: '/podcast/:id',
-        element: <PodcastDetailScreen />
+        element: <PodcastDetailScreen />,
+        children: [
+          {
+            path: '/podcast/:id/',
+            element: <EpisodesListSection />
+          },
+          {
+            path: '/podcast/:id/episode/:episodeId',
+            element: <EpisodeDetailSection />
+          }
+        ]
       },
       {
         path: '*',
