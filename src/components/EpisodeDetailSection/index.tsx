@@ -1,8 +1,16 @@
 import { useParams } from 'react-router-dom';
+import usePodcastDetailById from '../../hooks/usePodcastDetailById';
 
 const EpisodeDetailSection: React.FC = () => {
-  const { id } = useParams();
+  const { id, episodeId } = useParams();
+  const { isLoading, data } = usePodcastDetailById(id ?? '');
+  const currentEpisode = data?.results?.find((item: any) => `${item.trackId}` === episodeId);
 
+  // Error handling
+  if (isLoading) return <div>Loading...</div>;
+  if (!currentEpisode) return <h4>Episode not found</h4>;
+
+  // Render
   return (
     <div
       style={{
@@ -12,7 +20,6 @@ const EpisodeDetailSection: React.FC = () => {
         borderRadius: '4px',
         boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
         display: 'flex',
-        marginBottom: '4vw',
         padding: '10px 16px',
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -21,7 +28,7 @@ const EpisodeDetailSection: React.FC = () => {
         width: '72%',
       }}
     >
-      <h4
+      <h5
         style={{
           marginTop: 10,
           marginBottom: 10,
@@ -29,8 +36,36 @@ const EpisodeDetailSection: React.FC = () => {
         }}
       >
         Episode {id}
-      </h4>
-      <p><i>Episode description</i></p>
+      </h5>
+      <p
+        style={{
+          fontSize: '0.5em',
+          margin: 0,
+          textAlign: 'left',
+          width: '100%',
+        
+        }}
+      ><i>{currentEpisode.description}</i></p>
+
+      <hr
+        style={{
+          borderTop: '1px solid #CCC',
+          margin: '0.8em 0px',
+          width: '100%',
+        }}
+      />
+
+      <audio
+        controls
+        controlsList='nodownload'
+        style={{
+          marginBottom: '1vw',
+          width: '100%',
+        }}
+      >
+        <source src={currentEpisode.episodeUrl} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 }
