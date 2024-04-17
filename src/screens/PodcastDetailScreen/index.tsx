@@ -14,6 +14,10 @@ const PodcastDetailScreen = () => {
     setPodcastId(id ?? '');
   }, [id]);
 
+  const onPodcastDetailClickHandler = () => {
+    navigate(`/podcast/${id}`);
+  };
+
   // Error handling
   if (isLoading) return <h4>Loading...</h4>;
   if (!podcastDetail || !selectedPodcast) {
@@ -23,6 +27,8 @@ const PodcastDetailScreen = () => {
   return (
     <div className='screen row spaced'>
       <div
+        className='pressable'
+        onClick={onPodcastDetailClickHandler}
         style={{
           alignSelf: 'flex-start',
           border: '1px solid #ccc',
