@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { PodcastsContext } from '../../contexts/podcasts';
 
 const EpisodeDetailSection: React.FC = () => {
-  const { id, episodeId } = useParams();
+  const { episodeId } = useParams();
   const { isLoading, episodes } = useContext(PodcastsContext);
   const currentEpisode = episodes.find((item: any) => `${item.trackId}` === episodeId);
 
