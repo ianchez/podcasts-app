@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { PodcastsContext } from "../../contexts/podcasts";
+import { formatDuration } from "../../utils/format";
 
 const EpisodesListSection: React.FC = () => {
   const navigate = useNavigate();
@@ -70,10 +72,14 @@ const EpisodesListSection: React.FC = () => {
           </thead>
           <tfoot>
             {episodes.map(episode => (
-              <tr key={episode.trackId} className='pressable' onClick={() => onEpisodeClickHandler(episode.trackId)}>
+              <tr
+                key={episode.trackId}
+                className='pressable'
+                onClick={() => onEpisodeClickHandler(episode.trackId)}
+              >
                 <td>{episode.trackName}</td>
                 <td>{new Date(episode.releaseDate).toLocaleDateString()}</td>
-                <td>{(episode.trackTimeMillis ?? 1000) / 1000}</td>
+                <td>{formatDuration(episode.trackTimeMillis)}</td>
               </tr>
             ))}
           </tfoot>
