@@ -30,17 +30,17 @@ const PodcastDetailScreen = () => {
         className='pressable'
         onClick={onPodcastDetailClickHandler}
         style={{
+          alignItems: 'center',
           alignSelf: 'flex-start',
           border: '1px solid #ccc',
           borderRadius: '4px',
           boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
           display: 'flex',
-          padding: '20px',
           flexDirection: 'column',
-          alignItems: 'center',
           justifyContent: 'center',
-          height: '100%',
+          padding: '20px',
           width: '20%',
+          minWidth: '100px',
         }}
       >
         <img 
@@ -61,7 +61,18 @@ const PodcastDetailScreen = () => {
         <hr style={{ borderTop: '1px solid #CCC', margin: '0.8em 0px', width: "100%" }}/>
 
         <h6 style={{ margin: 0, marginBottom: '1vw', textAlign: 'left', width: "100%" }}>Description:</h6>
-        <p style={{ fontSize: '0.5em', textAlign: 'left', width: "100%" }}><i>{selectedPodcast?.summary.label}</i></p>
+        <p
+          style={{
+            fontSize: '0.5em',
+            textAlign: 'left',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+            whiteSpace: 'preserve-breaks',
+            width: "100%",
+          }}
+        >
+            <i>{selectedPodcast?.summary.label}</i>
+        </p>
       </div>
 
       <Outlet />

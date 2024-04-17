@@ -43,7 +43,7 @@ const EpisodeDetailSection: React.FC = () => {
           margin: 0,
           textAlign: 'left',
           width: '100%',
-        
+          whiteSpace: 'preserve-breaks',
         }}
       ><i>{currentEpisode.description}</i></p>
 
