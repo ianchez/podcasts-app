@@ -2,29 +2,39 @@ import { PODCASTS_URL, PODCAST_DETAIL_URL } from '../constants/api';
 
 type ResponseApiAllOriginsType = {
   contents: string;
-  status: any;
+  status: {
+    url: string;
+    content_type: string;
+    http_code: number;
+    response_time: string;
+    content_length: string;
+  };
 };
 
 class ApiService {
   private async getData(url: string): Promise<ResponseApiAllOriginsType> {
-    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-
-    if (!response.ok) {
-      const errorMessage = "HTTP error! status: "
-      console.error(errorMessage, response.status, response);
-      throw new Error(`${errorMessage}${response.status}`);
-    };
-
-    const data = response.json() as Promise<ResponseApiAllOriginsType>;
-    return JSON.parse((await data).contents);
+    try {
+      const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      };
+  
+      return response.json();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   };
 
-  getPodcasts(): Promise<any> {
-    return this.getData(PODCASTS_URL)
+  async getPodcasts() {
+    const data = await this.getData(PODCASTS_URL);
+    return JSON.parse(data.contents);
   };
 
-  getPodcastDetail(id: string, limit?: number): Promise<any> {
-    return this.getData(PODCAST_DETAIL_URL(id, limit))
+  async getPodcastDetail(id: string, limit?: number) {
+    const data = await this.getData(PODCAST_DETAIL_URL(id, limit));
+    return JSON.parse(data.contents);
   };
 };
 
