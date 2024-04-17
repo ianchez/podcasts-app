@@ -35,7 +35,7 @@ const EpisodeDetailSection: React.FC = () => {
           padding: 0,
         }}
       >
-        Episode {id}
+        {currentEpisode.trackName}
       </h5>
       <p
         style={{

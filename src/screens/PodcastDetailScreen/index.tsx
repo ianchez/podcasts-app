@@ -7,12 +7,18 @@ const PodcastDetailScreen = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { episodes, podcasts, podcastDetail, setPodcastId } = useContext(PodcastsContext);
+  const { isLoading, podcasts, podcastDetail, setPodcastId } = useContext(PodcastsContext);
   const selectedPodcast = podcasts.find(podcast => podcast.id.attributes['im:id'] === id);
 
   useEffect(() => {
     setPodcastId(id ?? '');
   }, [id]);
+
+  // Error handling
+  if (isLoading) return <h4>Loading...</h4>;
+  if (!podcastDetail || !selectedPodcast) {
+    return <h4>Podcast Not Found</h4>;
+  }
 
   return (
     <div className='screen row spaced'>

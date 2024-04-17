@@ -71,7 +71,7 @@ const EpisodesListSection: React.FC = () => {
             <tr className='pressable' onClick={() => onEpisodeClickHandler(episode.trackId)}>
               <td>{episode.trackName}</td>
               <td>{new Date(episode.releaseDate).toLocaleDateString()}</td>
-              <td>{episode.trackTimeMillis / 1000}</td>
+              <td>{(episode.trackTimeMillis ?? 1000) / 1000}</td>
             </tr>
           ))}
         </table>
