@@ -8,8 +8,7 @@ const EpisodesListSection: React.FC = () => {
   const { id } = useParams();
   const { episodes } = useContext(PodcastsContext);
 
-  const onEpisodeClickHandler = (episodeId: string) => {
-    console.log('Episode clicked', episodeId);
+  const onEpisodeClickHandler = (episodeId: number) => {
     navigate('/podcast/' + id + '/episode/' + episodeId);
   }
 

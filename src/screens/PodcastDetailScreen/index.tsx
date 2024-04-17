@@ -45,7 +45,7 @@ const PodcastDetailScreen = () => {
       >
         <img 
           src={podcastDetail?.artworkUrl600} 
-          alt={podcastDetail?.title}
+          alt={podcastDetail?.collectionName}
           style={{
             borderRadius: '3%',
             maxWidth: '80%',

@@ -2,13 +2,13 @@ import React, { createContext, useEffect, useState } from 'react';
 
 import usePodcasts from '../hooks/usePodcasts';
 import usePodcastDetailById from '../hooks/usePodcastDetailById';
-import { Podcast } from '../constants/types';
+import { Episode, Podcast, PodcastDetail } from '../constants/types';
 
 type podcastsState = {
   isLoading: boolean;
   podcasts: Podcast[];
-  podcastDetail: any;
-  episodes: any[];
+  podcastDetail: PodcastDetail | null;
+  episodes: Episode[];
   setPodcastId: (id: string) => void;
 };
 
@@ -29,28 +29,29 @@ type PodcastsProviderProps = {
 export const PodcastsProvider = ({ children }: PodcastsProviderProps) => {
   const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
   const [ podcastId, setPodcastId ] = useState('');
-  const [ podcastDetail, setPodcastDetail ] = useState<Podcast | null>(null);
-  const [ episodes, setEpisodes ] = useState<any[]>([]);
+  const [ podcastDetail, setPodcastDetail ] = useState<PodcastDetail | null>(null);
+  const [ episodes, setEpisodes ] = useState<Episode[]>([]);
 
   const { isLoading: isPodcastsLoading, data } = usePodcasts();
   const { isLoading: isPodcastDetailLoading, data: podcastDetailData } = usePodcastDetailById(podcastId);
 
   useEffect(() => {
     if (!isPodcastsLoading) {
-      setPodcasts(data?.feed?.entry as Podcast[] || []);
+      setPodcasts(data?.feed.entry || []);
     }
   } , [isPodcastsLoading]);
 
   useEffect(() => {
     if (!isPodcastDetailLoading && podcastDetailData) {
-      const detailData = podcastDetailData.results.find((data: any) => data.kind === "podcast");
-      const episodeData = podcastDetailData.results.filter((data: any) => data.kind === "podcast-episode");
+      const detailData = podcastDetailData.results.find((data) => data.kind === "podcast");
+      const episodeData = podcastDetailData.results.filter((data) => data.kind === "podcast-episode");
+
       if (detailData) {
-        setPodcastDetail(detailData as Podcast);
+        setPodcastDetail(detailData as PodcastDetail);
       }
 
       if (episodeData?.length) {
-        setEpisodes(episodeData as Podcast[]);
+        setEpisodes(episodeData as Episode[]);
       }
     }
   } , [isPodcastDetailLoading, podcastId]);

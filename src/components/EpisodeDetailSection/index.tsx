@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import usePodcastDetailById from '../../hooks/usePodcastDetailById';
+import { PodcastsContext } from '../../contexts/podcasts';
 
 const EpisodeDetailSection: React.FC = () => {
   const { id, episodeId } = useParams();
-  const { isLoading, data } = usePodcastDetailById(id ?? '');
-  const currentEpisode = data?.results?.find((item: any) => `${item.trackId}` === episodeId);
+  const { isLoading, episodes } = useContext(PodcastsContext);
+  const currentEpisode = episodes.find((item: any) => `${item.trackId}` === episodeId);
 
   // Error handling
   if (isLoading) return <div>Loading...</div>;
