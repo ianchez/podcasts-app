@@ -4,7 +4,7 @@ import { CACHE_TIME } from '../constants/api';
 
 const usePodcastDetailById = (id: string) => useQuery({
   queryKey: ['podcast', id],
-  queryFn: async () => await ApiService.getPodcastDetail(id),
+  queryFn: () => ApiService.getPodcastDetail(id),
   staleTime: CACHE_TIME // 10 minutes
 });
 
