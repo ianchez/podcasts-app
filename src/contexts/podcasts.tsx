@@ -42,9 +42,9 @@ export const PodcastsProvider = ({ children }: PodcastsProviderProps) => {
   } , [isPodcastsLoading]);
 
   useEffect(() => {
-    if (!isPodcastDetailLoading) {
-      const detailData = podcastDetailData?.results.find((data: any) => data.kind === "podcast");
-      const episodeData = podcastDetailData?.results.filter((data: any) => data.kind === "podcast-episode");
+    if (!isPodcastDetailLoading && podcastDetailData) {
+      const detailData = podcastDetailData.results.find((data: any) => data.kind === "podcast");
+      const episodeData = podcastDetailData.results.filter((data: any) => data.kind === "podcast-episode");
       if (detailData) {
         setPodcastDetail(detailData as Podcast);
       }
