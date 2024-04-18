@@ -27,6 +27,15 @@ import ErrorScreen from './screens/ErrorScreen';
 import EpisodesListSection from './components/EpisodesListSection';
 import EpisodeDetailSection from './components/EpisodeDetailSection';
 
+// Forces navigation state to change when navigating to a new route
+const loader = () => {
+  // Simulate a delay in development mode
+  if (process.env.NODE_ENV === 'development') {
+    return new Promise(resolve => setTimeout(() => resolve(true), 1000))
+  }
+  return true;
+};
+
 // TODO: Move this to a separate file
 const routes = [
   {
@@ -36,19 +45,23 @@ const routes = [
     children: [
       {
         path: '/',
-        element: <HomeScreen />
+        element: <HomeScreen />,
+        loader,
       },
       {
         path: '/podcast/:id',
         element: <PodcastDetailScreen />,
+        loader,
         children: [
           {
             path: '/podcast/:id/',
-            element: <EpisodesListSection />
+            element: <EpisodesListSection />,
+            loader,
           },
           {
             path: '/podcast/:id/episode/:episodeId',
-            element: <EpisodeDetailSection />
+            element: <EpisodeDetailSection />,
+            loader,
           }
         ]
       },

@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import { useNavigate, useNavigation } from 'react-router-dom';
+
+import { PodcastsContext } from '../../contexts/podcasts';
 import './index.css';
-import { useNavigate } from 'react-router-dom';
 
 const Header: () => JSX.Element = () => {
+  const { state } = useNavigation();
   const navigate = useNavigate();
+  const { isLoading } = useContext(PodcastsContext);
   const handleLogoClick: () => void = () => {
     navigate('/')
   };
@@ -15,6 +20,9 @@ const Header: () => JSX.Element = () => {
       >
           Podcaster
       </h5>
+      {(state !== 'idle' || isLoading) &&
+        <span className='pulsating-circle' />
+      }
     </div>
   );
 }
