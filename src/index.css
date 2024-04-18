@@ -1,5 +1,6 @@
 :root {
   --darker: #282c34;
+  --screen-top-padding: calc(60px + 2%);
 }
 
 body {
@@ -96,7 +97,7 @@ p {
 .screen {
   box-sizing: border-box;
   flex-wrap: wrap;
-  padding: calc(60px + 2%) 3%;
+  padding: var(--screen-top-padding) 3% 40px 3%;
   width: 100%;
 }
 

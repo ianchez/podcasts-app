@@ -1,13 +1,19 @@
 #side-bar-container {
+  /* Make it float while the episode list scrolls */
+  position: sticky;
+  top: var(--screen-top-padding);
+  z-index: 2;
+
   align-items: center;
   align-self: flex-start;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 6vw;
+  margin-bottom: 8vw;
   padding: 20px 1.4vw;
   width: 20%;
   min-width: 190px;
