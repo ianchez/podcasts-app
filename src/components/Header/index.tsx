@@ -8,9 +8,12 @@ const Header: React.FC<{}> = () => {
   const { state } = useNavigation();
   const navigate = useNavigate();
   const { isLoading } = useContext(PodcastsContext);
+
   const handleLogoClick: () => void = () => {
     navigate('/')
   };
+
+  const showLoadingState = state !== 'idle' || isLoading;
 
   return (
     <div className='header'>
@@ -18,11 +21,10 @@ const Header: React.FC<{}> = () => {
         className="pressable"
         onClick={handleLogoClick}
       >
-          Podcaster
+        Podcaster
       </h5>
-      {(state !== 'idle' || isLoading) &&
-        <span className='pulsating-circle' />
-      }
+
+      {showLoadingState && <span className='pulsating-circle' />}
     </div>
   );
 }
