@@ -20,9 +20,9 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   };
 
   // Error handling
-  if (isLoading) return <h4>Loading...</h4>;
+  if (isLoading) return <div className='screen'><h4>Loading...</h4></div>;
   if (!podcastDetail || !selectedPodcast) {
-    return <h4>Podcast Not Found</h4>;
+    return <div className='screen'><h4>Podcast Not Found</h4></div>;
   }
 
   const sideBar = (
