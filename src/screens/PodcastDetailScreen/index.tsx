@@ -27,8 +27,6 @@ const PodcastDetailScreen = () => {
   return (
     <div className='screen row spaced'>
       <div
-        className='pressable'
-        onClick={onPodcastDetailClickHandler}
         style={{
           alignItems: 'center',
           alignSelf: 'flex-start',
@@ -43,7 +41,9 @@ const PodcastDetailScreen = () => {
           minWidth: '100px',
         }}
       >
-        <img 
+        <img
+          className='pressable'
+          onClick={onPodcastDetailClickHandler}
           src={podcastDetail?.artworkUrl600} 
           alt={podcastDetail?.collectionName}
           style={{
@@ -55,7 +55,13 @@ const PodcastDetailScreen = () => {
 
         <hr style={{ borderTop: '1px solid #CCC', margin: '0.8em 0px', width: "100%" }}/>
 
-        <h6 style={{ margin: 0, textAlign: 'left', width: "100%" }}>{podcastDetail?.collectionName}</h6>
+        <h6
+          className='pressable'
+          onClick={onPodcastDetailClickHandler}
+          style={{ margin: 0, textAlign: 'left', width: "100%" }}
+        >
+          {podcastDetail?.collectionName}
+        </h6>
         <p style={{ fontSize: '0.5em',margin: 0, textAlign: 'left', width: "100%" }}><i>By {podcastDetail?.artistName}</i></p>
 
         <hr style={{ borderTop: '1px solid #CCC', margin: '0.8em 0px', width: "100%" }}/>
