@@ -1,0 +1,10 @@
+#podcasts-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 8%;
+  column-gap: 1vw;
+  row-gap: 6vw;
+  width: 100%;
+}
