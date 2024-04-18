@@ -19,7 +19,7 @@
   max-width: 80%;
 }
 
-#side-bar-container h6, p {
+#side-bar-container h6, #side-bar-container p {
   margin: 0;
   text-align: left;
   width: 100%;

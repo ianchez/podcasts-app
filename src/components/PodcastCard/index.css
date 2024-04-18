@@ -1,0 +1,46 @@
+:root {
+  --podcast-content-shift: -7vw;
+  --podcast-img-margin-horizontal: 3vw;
+}
+
+.podcast-item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 0;
+  height: 100%;
+  min-width: 200px;
+  width: 23%;
+}
+
+.podcast-item .transparent {
+  height: 100px; width: 100%;
+}
+
+.podcast-item .shifted-container {
+  box-shadow: 0px 0px 8px 0px #ccc;
+  box-sizing: border-box;
+  padding: 0px 1vw 1vw 1vw;
+  height: 100%;
+  width: 100%;
+}
+
+.podcast-item img {
+  box-sizing: border-box;
+  border: 1px solid #f2f2f2;
+  border-radius: 50%;
+  position: relative;
+  margin: 0vw var(--podcast-img-margin-horizontal);
+  top: var(--podcast-content-shift);
+  width: calc(100% - var(--podcast-img-margin-horizontal) * 2);
+}
+
+.podcast-item h5 {
+  margin-top: var(--podcast-content-shift);
+  text-transform: uppercase;
+}
+
+.podcast-item p {
+  font-size: 0.7em;
+}
