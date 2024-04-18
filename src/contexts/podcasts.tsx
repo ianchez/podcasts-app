@@ -26,7 +26,7 @@ type PodcastsProviderProps = {
   children: React.ReactNode;
 };
 
-export const PodcastsProvider = ({ children }: PodcastsProviderProps) => {
+export const PodcastsProvider: React.FC<PodcastsProviderProps> = ({ children }) => {
   const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
   const [ podcastId, setPodcastId ] = useState('');
   const [ podcastDetail, setPodcastDetail ] = useState<PodcastDetail | null>(null);
