@@ -4,7 +4,7 @@ import './index.css';
 import Header from '../../components/Header';
 
 const RootLayout = () => (
-  <div className='layout'>
+  <div id='layout'>
     <Header />
     <Outlet />
   </div>
