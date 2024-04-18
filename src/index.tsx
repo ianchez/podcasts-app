@@ -9,73 +9,12 @@ import {
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom';
+import {RouterProvider} from 'react-router-dom';
+import router from './routers/router';
 
 import PodcastsProvider from './contexts/podcasts';
 
-// screens
-import NotFoundScreen from './screens/NotFoundScreen';
-import RootLayout from './screens/RootLayout';
-import HomeScreen from './screens/HomeScreen';
-import PodcastDetailScreen from './screens/PodcastDetailScreen';
-import ErrorScreen from './screens/ErrorScreen';
-
-// sections
-import EpisodesListSection from './components/EpisodesListSection';
-import EpisodeDetailSection from './components/EpisodeDetailSection';
-
-// Forces navigation state to change when navigating to a new route
-const loader = () => {
-  // Simulate a delay in development mode
-  if (process.env.NODE_ENV === 'development') {
-    return new Promise(resolve => setTimeout(() => resolve(true), 1000))
-  }
-  return true;
-};
-
-// TODO: Move this to a separate file
-const routes = [
-  {
-    path: '/',
-    element: <RootLayout />,
-    errorElement: <ErrorScreen />,
-    children: [
-      {
-        path: '/',
-        element: <HomeScreen />,
-        loader,
-      },
-      {
-        path: '/podcast/:id',
-        element: <PodcastDetailScreen />,
-        loader,
-        children: [
-          {
-            path: '/podcast/:id/',
-            element: <EpisodesListSection />,
-            loader,
-          },
-          {
-            path: '/podcast/:id/episode/:episodeId',
-            element: <EpisodeDetailSection />,
-            loader,
-          }
-        ]
-      },
-      {
-        path: '*',
-        element: <NotFoundScreen />
-      }
-    ]
-  }
-];
-
 const queryClient = new QueryClient();
-
-const router = createBrowserRouter(routes);
 
 const rootElement = document.getElementById('root');
 
