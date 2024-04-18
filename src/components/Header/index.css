@@ -6,7 +6,7 @@
   z-index: 10;
 
   box-sizing: border-box;
-  color: rgb(42, 138, 153);
+  color: var(--color-light-blue);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,6 +46,6 @@ h5 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #3498db;
+  background-color: var(--color-light-blue);
   animation: pulsate 1s infinite ease-in-out;
 }

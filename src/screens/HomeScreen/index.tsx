@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { PodcastsContext } from '../../contexts/podcasts';
 
 import PodcastsList from '../../components/PodcastsList';
+import './index.css';
 
 const HomeScreen: React.FC<{}> = () => {
   const { isLoading, podcasts } = useContext(PodcastsContext);
@@ -10,7 +11,7 @@ const HomeScreen: React.FC<{}> = () => {
   return (
     <div className="screen">
       <div className='row end'>
-        <p>{podcasts.length}</p>
+        <p id='podcasts-counter'>{podcasts.length}</p>
         <input
           type='text'
           placeholder='Filter podcasts...'
