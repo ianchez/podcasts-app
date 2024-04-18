@@ -25,11 +25,11 @@ const PodcastDetailScreen: React.FC<{}> = () => {
     return <h4>Podcast Not Found</h4>;
   }
 
-  const sideBar =  (
+  const sideBar = (
     <div id='side-bar-container'>
       <img
         className='pressable'
-        aria-role='button'
+        role='button'
         onClick={onPodcastDetailClickHandler}
         src={podcastDetail.artworkUrl600} 
         alt={podcastDetail.collectionName}
@@ -39,7 +39,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
 
       <h6
         className='pressable'
-        aria-role='button'
+        role='button'
         onClick={onPodcastDetailClickHandler}
       >
         {podcastDetail.collectionName}
