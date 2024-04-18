@@ -2,8 +2,10 @@
   --screen-top-padding: calc(60px + 2%);
   
   --color-darker: #282c34;
+  --color-shadow: rgba(0, 0, 0, 0.2);
   --color-light-cream: #f7f7f7;
   --color-light-gray: #ddd;
+  --color-light-gray-border: #ccc;
   --color-light-border: #f3f3f3;
   --color-light-blue: rgb(65, 142, 166);
 }
@@ -42,9 +44,14 @@ input {
   margin: 10px;
   font-size: 0.5em;
   border-radius: 5px;
-  border: 1px solid var(--color-darker);
+  border: 1px solid var(--color-light-gray-border);
   background-color: white;
   color: var(--color-darker);
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--color-darker);
 }
 
 table {
