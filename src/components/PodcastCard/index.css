@@ -19,6 +19,7 @@
 }
 
 .podcast-item .shifted-container {
+  border-radius: 4px;
   box-shadow: 0px 0px 8px 0px var(--color-light-gray-border);
   box-sizing: border-box;
   padding: 0px 1vw 1vw 1vw;
