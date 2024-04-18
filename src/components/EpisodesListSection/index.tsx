@@ -72,12 +72,13 @@ const EpisodesListSection: React.FC = () => {
           </thead>
           <tfoot>
             {episodes.map(episode => (
-              <tr
-                key={episode.trackId}
-                className='pressable'
-                onClick={() => onEpisodeClickHandler(episode.trackId)}
-              >
-                <td>{episode.trackName}</td>
+              <tr key={episode.trackId}>
+                <td
+                  className='pressable'
+                  onClick={() => onEpisodeClickHandler(episode.trackId)}
+                >
+                  {episode.trackName}
+                </td>
                 <td>{new Date(episode.releaseDate).toLocaleDateString()}</td>
                 <td>{formatDuration(episode.trackTimeMillis)}</td>
               </tr>
