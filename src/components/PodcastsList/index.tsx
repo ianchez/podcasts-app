@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { Podcast } from "../../constants/types";
 
-type PodcastListProps = {
+type PodcastListPropsType = {
   podcasts: Podcast[];
   filter: string;
 };
 
-const PodcastList: React.FC<PodcastListProps> = ({
+const PodcastList: React.FC<PodcastListPropsType> = ({
   podcasts,
   filter = ''
 }) => {
 
-  const filteredPodcasts: any[] = podcasts?.filter((podcast: any) => 
-    podcast['im:name'].label.toLowerCase().includes(filter.toLowerCase())
+  const filteredPodcasts = podcasts?.filter((podcast) => 
+    podcast['im:name'].label.toLowerCase().includes(filter.toLowerCase()) ||
+    podcast['im:artist'].label.toLowerCase().includes(filter.toLowerCase())
   ) || [];
 
   return (
@@ -28,7 +29,7 @@ const PodcastList: React.FC<PodcastListProps> = ({
         width: '100%',
       }}
     >
-      {filteredPodcasts.map((podcast: Podcast) =>
+      {filteredPodcasts.map((podcast) =>
         <PodcastCard key={podcast.id.attributes['im:id']} podcast={podcast} />
       )}
     </div>
@@ -59,7 +60,7 @@ const PodcastCard: React.FC<{podcast: Podcast}> = ({podcast}) => {
     >
       <div style={{ height: '100px', width: '100%' }}></div>
       <div
-        className="pressable"
+        className='pressable'
         onClick={() => onEpisodeClickHandler(id)}
         style={{
           boxShadow: '0px 0px 8px 0px #ccc',
