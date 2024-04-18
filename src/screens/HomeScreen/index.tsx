@@ -7,9 +7,6 @@ const HomeScreen: React.FC<{}> = () => {
   const { isLoading, podcasts } = useContext(PodcastsContext);
   const [filter, setFilter] = useState('');
 
-  const onFilterChangeHandler = (value: string) =>
-    setFilter(value);
-
   return (
     <div className="screen">
       <div className='row end'>
@@ -18,7 +15,7 @@ const HomeScreen: React.FC<{}> = () => {
           type='text'
           placeholder='Filter podcasts...'
           value={filter}
-          onChange={({target}) => onFilterChangeHandler(target.value)}
+          onChange={({target}) => setFilter(target.value)}
         />
       </div>
 
