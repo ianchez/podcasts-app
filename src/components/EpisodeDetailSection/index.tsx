@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { PodcastsContext } from '../../contexts/podcasts';
 
+import './index.css';
+
 const EpisodeDetailSection: React.FC<{}> = () => {
   const { episodeId } = useParams();
   const { isLoading, episodes } = useContext(PodcastsContext);
@@ -13,52 +15,16 @@ const EpisodeDetailSection: React.FC<{}> = () => {
 
   // Render
   return (
-    <div
-      style={{
-        alignSelf: 'flex-start',
-        border: '1px solid #ccc',
-        boxSizing: 'border-box',
-        borderRadius: '4px',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-        display: 'flex',
-        padding: '10px 16px',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        height: '100%',
-        width: '72%',
-      }}
-    >
-      <h5
-        style={{
-          marginTop: 10,
-          marginBottom: 10,
-          padding: 0,
-        }}
-      >
-        {currentEpisode.trackName}
-      </h5>
+    <div id='episode-detail-container'>
+      <h5>{currentEpisode.trackName}</h5>
 
       <p
-        style={{
-          fontSize: '0.5em',
-          fontStyle: 'italic',
-          margin: 0,
-          textAlign: 'left',
-          width: '100%',
-          whiteSpace: 'preserve-breaks',
-        }}
+        id='episode-description'
         // Episode description could contain HTML tags
         dangerouslySetInnerHTML={{ __html: currentEpisode.description }}
       />
 
-      <hr
-        style={{
-          borderTop: '1px solid #CCC',
-          margin: '0.8em 0px',
-          width: '100%',
-        }}
-      />
+      <hr />
 
       <audio
         controls
