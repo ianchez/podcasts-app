@@ -1,11 +1,20 @@
 .header {
+  /* Make it float above content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  box-sizing: border-box;
   color: rgb(42, 138, 153);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  /* background-color: #f8f9fa; */
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
   border-bottom: 2px solid #e9ecef;
 }
 
