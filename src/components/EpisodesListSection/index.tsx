@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PodcastsContext } from "../../contexts/podcasts";
 import { formatDuration } from "../../utils/format";
 
-const EpisodesListSection: React.FC = () => {
+const EpisodesListSection: React.FC<{}> = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();

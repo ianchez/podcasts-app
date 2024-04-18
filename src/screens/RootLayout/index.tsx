@@ -3,7 +3,7 @@ import './index.css';
 
 import Header from '../../components/Header';
 
-const RootLayout = () => (
+const RootLayout: React.FC<{}> = () => (
   <div id='layout'>
     <Header />
     <Outlet />

@@ -3,7 +3,7 @@ import { PodcastsContext } from '../../contexts/podcasts';
 
 import PodcastsList from '../../components/PodcastsList';
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC<{}> = () => {
   const { isLoading, podcasts } = useContext(PodcastsContext);
   const [filter, setFilter] = useState('');
 

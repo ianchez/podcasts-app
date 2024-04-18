@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useNavigation } from 'react-router-dom';
 
 import { PodcastsContext } from '../../contexts/podcasts';
 import './index.css';
 
-const Header: () => JSX.Element = () => {
+const Header: React.FC<{}> = () => {
   const { state } = useNavigation();
   const navigate = useNavigate();
   const { isLoading } = useContext(PodcastsContext);

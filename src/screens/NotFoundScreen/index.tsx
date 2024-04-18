@@ -1,4 +1,4 @@
-const NotFoundScreen = () => {
+const NotFoundScreen: React.FC<{}> = () => {
   return (
     <div className='screen'>
       <h3>Not found</h3>
