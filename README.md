@@ -6,6 +6,21 @@ React / Typescript SPA - Showing the latest popular podcasts
 This is a simple React / Typescript SPA that shows the latest popular podcasts in iTunes.
 The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json) to fetch the data.
 
+### Features
+- The app shows the top 100 podcasts in the iTunes API
+- The user can filter the podcasts by title
+- The user can click on a podcast to see more details
+- The user can see the podcast's author, title, image, and summary
+- The user can see the podcast's episode list
+- The user can play directly the podcast from the app
+
+### Technologies
+- React 18
+- Typescript
+- react-router-dom (for routing)
+- react-query (for data fetching and cache)
+- eslint (for linting on local development)
+
 ## Installation
 1. Clone the repository
 2. You need **Node.js** installed. I recommend using NVM [github repository](https://github.com/nvm-sh/nvm)
