@@ -38,15 +38,19 @@ const EpisodeDetailSection: React.FC = () => {
       >
         {currentEpisode.trackName}
       </h5>
+
       <p
         style={{
           fontSize: '0.5em',
+          fontStyle: 'italic',
           margin: 0,
           textAlign: 'left',
           width: '100%',
           whiteSpace: 'preserve-breaks',
         }}
-      ><i>{currentEpisode.description}</i></p>
+        // Episode description could contain HTML tags
+        dangerouslySetInnerHTML={{ __html: currentEpisode.description }}
+      />
 
       <hr
         style={{
