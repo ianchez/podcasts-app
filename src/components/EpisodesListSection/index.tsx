@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { PodcastsContext } from "../../contexts/podcasts";
+import { PodcastDetailContext } from "../../contexts/PodcastDetailProvider";
 import { formatDuration } from "../../utils/format";
 
 import './index.css';
@@ -19,7 +19,7 @@ const useEpisodeNavigation = () => {
 
 const EpisodesListSection: React.FC<{}> = () => {
   const onEpisodeClickHandler = useEpisodeNavigation();
-  const { episodes } = useContext(PodcastsContext);
+  const { episodes } = useContext(PodcastDetailContext);
 
   return (
     <div id='episodes-list-container'>

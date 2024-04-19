@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { PodcastsContext } from '../../contexts/podcasts';
+import { PodcastsContext } from '../../contexts/PodcastsProvider';
 
 import PodcastsList from '../../components/PodcastsList';
 import './index.css';

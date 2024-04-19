@@ -8239,6 +8239,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-array-to-tree@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-array-to-tree/-/react-array-to-tree-2.0.1.tgz#a5793ee74fa4b69176e5d6a088ab08c22b29a3ec"
+  integrity sha512-bDdL2sYECM+CUNQVlEv2h8W+30/YRlfJkz+0l3VlgTkg9dHF5SiZ8J+g4Mee/+V134TJ1eQS/v1hQslHotSU3g==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"

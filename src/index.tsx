@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
+import reactArrayToTree from 'react-array-to-tree';
+
+import './index.css';
 
 import {
   QueryClient,
@@ -12,7 +14,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {RouterProvider} from 'react-router-dom';
 import router from './routers/router';
 
-import PodcastsProvider from './contexts/podcasts';
+import PodcastsProvider from './contexts/PodcastsProvider';
+import PodcastDetailProvider from './contexts/PodcastDetailProvider';
 
 const queryClient = new QueryClient();
 
@@ -24,13 +27,18 @@ if (rootElement === null) {
 
 const root = ReactDOM.createRoot(rootElement);
 
+const ContextProviders = reactArrayToTree([
+  <PodcastsProvider />,
+  <PodcastDetailProvider />,
+]);
+
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen />
-      <PodcastsProvider>
-        <RouterProvider router={router} />
-      </PodcastsProvider>
+      <ContextProviders>
+        <ReactQueryDevtools initialIsOpen />
+        <RouterProvider router={router} />,
+      </ContextProviders>
     </QueryClientProvider>
   </React.StrictMode>
 );
