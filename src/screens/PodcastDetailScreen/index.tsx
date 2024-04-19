@@ -4,6 +4,7 @@ import { useNavigate, useParams, Outlet } from 'react-router-dom';
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import './index.css';
+import SCREENS from '../../constants/screens';
 
 const PodcastDetailScreen: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   }, [id]);
 
   const onPodcastDetailClickHandler = () => {
-    navigate(`/podcast/${id}`);
+    navigate(SCREENS.PODCAST_DETAIL.PATH_BUILDER(id ?? ''));
   };
 
   // Error handling
