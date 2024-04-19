@@ -1,4 +1,5 @@
 import { PODCASTS_URL, PODCAST_DETAIL_URL } from '../constants/api';
+import HttpClient from './HttpClient';
 
 type ResponseApiAllOriginsType = {
   contents: string;
@@ -12,9 +13,11 @@ type ResponseApiAllOriginsType = {
 };
 
 class ApiService {
+  constructor(private httpClient: typeof HttpClient) {}
+
   private async getData(url: string): Promise<ResponseApiAllOriginsType> {
     try {
-      const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+      const response = await this.httpClient.get(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,5 +41,4 @@ class ApiService {
   };
 };
 
-const apiService = new ApiService();
-export default apiService;
+export default new ApiService(HttpClient);
