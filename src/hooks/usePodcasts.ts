@@ -11,7 +11,7 @@ const usePodcastsHook = () => {
     if (!isLoading) {
       setPodcasts(data?.feed.entry || []);
     }
-  } , [isLoading]);
+  } , [isLoading, data?.feed.entry]);
 
   return {
     isLoading,

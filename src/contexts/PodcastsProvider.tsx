@@ -14,7 +14,7 @@ const INITIAL_STATE: podcastsState = {
 
 export const PodcastsContext = createContext(INITIAL_STATE);
 
-const PodcastsListProvider: React.FC<{children?: React.ReactNode}> = ({ children }) => {
+const PodcastsProvider: React.FC<{children?: React.ReactNode}> = ({ children }) => {
   const { isLoading, podcasts } = usePodcasts();
 
   return (
@@ -24,4 +24,4 @@ const PodcastsListProvider: React.FC<{children?: React.ReactNode}> = ({ children
   );
 };
 
-export default PodcastsListProvider;
+export default PodcastsProvider;
