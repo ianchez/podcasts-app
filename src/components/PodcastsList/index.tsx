@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import PodcastCard from '../PodcastCard';
 import { Podcast } from "../../constants/types";
 
@@ -12,6 +14,12 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
   podcasts,
   filter = ''
 }) => {
+  const navigate = useNavigate();
+
+  const onPodcastClickHandler = (id: string) => {
+    navigate(`/podcast/${id}`);
+  };
+
   const filteredPodcasts = podcasts?.filter((podcast) => 
     podcast['im:name'].label.toLowerCase().includes(filter.toLowerCase()) ||
     podcast['im:artist'].label.toLowerCase().includes(filter.toLowerCase())
@@ -20,7 +28,11 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
   return (
     <div id='podcasts-list-container'>
       {filteredPodcasts.map((podcast) =>
-        <PodcastCard key={podcast.id.attributes['im:id']} podcast={podcast} />
+        <PodcastCard
+          key={podcast.id.attributes['im:id']}
+          podcast={podcast}
+          onPodcastClick={onPodcastClickHandler}
+        />
       )}
     </div>
   );

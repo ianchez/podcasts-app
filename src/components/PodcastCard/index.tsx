@@ -3,12 +3,15 @@ import { Podcast } from "../../constants/types";
 
 import './index.css';
 
-const PodcastCard: React.FC<{podcast: Podcast}> = ({podcast}) => {
-  const navigate = useNavigate();
+type PodcastCardPropsType = {
+  podcast: Podcast;
+  onPodcastClick: (id: string) => void;
+};
 
-  const onEpisodeClickHandler = () => {
+const PodcastCard: React.FC<PodcastCardPropsType> = ({podcast, onPodcastClick}) => {
+  const onPodcastClickHandler = () => {
     const id = podcast.id.attributes['im:id'] || '';
-    navigate(`/podcast/${id}`);
+    onPodcastClick(id);
   };
 
   return (
@@ -16,7 +19,7 @@ const PodcastCard: React.FC<{podcast: Podcast}> = ({podcast}) => {
       <span className="transparent" />
       <div
         className='pressable shifted-container'
-        onClick={onEpisodeClickHandler}
+        onClick={onPodcastClickHandler}
       >
         <img
           src={podcast['im:image'][2].label}
