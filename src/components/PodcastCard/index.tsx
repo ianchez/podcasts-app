@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Podcast } from "../../constants/types";
 
 import './index.css';

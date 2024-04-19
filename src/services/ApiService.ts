@@ -24,4 +24,5 @@ class ApiService {
   };
 };
 
-export default new ApiService(HttpClient, CORS_SERVICE_URL);
+const apiService = new ApiService(HttpClient, CORS_SERVICE_URL);
+export default apiService;
