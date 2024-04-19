@@ -1,12 +1,22 @@
-import { useQuery } from '@tanstack/react-query';
-import ApiService from '../services/ApiService';
-import { CACHE_TIME } from '../constants/api';
-import { PodcastsResultData } from '../constants/types';
+import { useEffect, useState } from 'react';
+import { useFetchPodcasts } from '../services/usePodcastDataService';
+import { Podcast } from '../constants/types';
 
-const usePodcasts = () => useQuery({
-  queryKey: ['podcasts'],
-  queryFn: async () => await ApiService.getPodcasts() as PodcastsResultData,
-  staleTime: CACHE_TIME
-});
+const usePodcastsHook = () => {
+  const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
 
-export default usePodcasts;
+  const { isLoading, data } = useFetchPodcasts();
+
+  useEffect(() => {
+    if (!isLoading) {
+      setPodcasts(data?.feed.entry || []);
+    }
+  } , [isLoading]);
+
+  return {
+    isLoading,
+    podcasts,
+  };
+}
+
+export default usePodcastsHook;

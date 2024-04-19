@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 import usePodcasts from '../hooks/usePodcasts';
 import usePodcastDetailById from '../hooks/usePodcastDetailById';
@@ -22,39 +22,15 @@ const DEFAULT_STATE: podcastsState = {
 
 export const PodcastsContext = createContext(DEFAULT_STATE);
 
+
 type PodcastsProviderProps = {
   children: React.ReactNode;
 };
 
 export const PodcastsProvider: React.FC<PodcastsProviderProps> = ({ children }) => {
-  const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
   const [ podcastId, setPodcastId ] = useState('');
-  const [ podcastDetail, setPodcastDetail ] = useState<PodcastDetail | null>(null);
-  const [ episodes, setEpisodes ] = useState<Episode[]>([]);
-
-  const { isLoading: isPodcastsLoading, data } = usePodcasts();
-  const { isLoading: isPodcastDetailLoading, data: podcastDetailData } = usePodcastDetailById(podcastId);
-
-  useEffect(() => {
-    if (!isPodcastsLoading) {
-      setPodcasts(data?.feed.entry || []);
-    }
-  } , [isPodcastsLoading]);
-
-  useEffect(() => {
-    if (!isPodcastDetailLoading && podcastDetailData) {
-      const detailData = podcastDetailData.results.find((data) => data.kind === "podcast");
-      const episodeData = podcastDetailData.results.filter((data) => data.kind === "podcast-episode");
-
-      if (detailData) {
-        setPodcastDetail(detailData as PodcastDetail);
-      }
-
-      if (episodeData?.length) {
-        setEpisodes(episodeData as Episode[]);
-      }
-    }
-  } , [isPodcastDetailLoading, podcastId]);
+  const { isLoading: isPodcastsLoading, podcasts } = usePodcasts();
+  const { isLoading: isPodcastDetailLoading, podcastDetail, episodes } = usePodcastDetailById(podcastId);
 
   const value = {
     isLoading: isPodcastsLoading || isPodcastDetailLoading,
