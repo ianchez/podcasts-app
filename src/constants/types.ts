@@ -89,49 +89,61 @@ export interface PodcastDetailResultData {
   results: Array<PodcastDetail | Episode>
 }
 
-interface DetailItem {
-  artistViewUrl: string
+interface Artwork {
+  artworkUrl30?: string // only for podcast detail
   artworkUrl60: string
+  artworkUrl100?: string // only for podcast detail
+  artworkUrl160?: string // only for episodes
   artworkUrl600: string
+}
+
+interface Collection {
   collectionId: number
   collectionName: string
   collectionViewUrl: string
-  contentAdvisoryRating: string
-  country: string
-  feedUrl: string
-  releaseDate: string
+
+  // only for podcast detail
+  collectionCensoredName?: string
+  collectionExplicitness?: string
+  collectionHdPrice?: number
+  collectionPrice: number
+}
+
+interface Track {
   trackId: number
   trackName: string
   trackTimeMillis?: number
   trackViewUrl: string
+
+  // only for podcast detail
+  trackCensoredName?: string
+  trackCount?: number
+  trackExplicitness?: string
+  trackPrice?: number
+  trackRentalPrice?: number
+}
+
+interface DetailItem extends Artwork, Collection, Track {
+  artistViewUrl: string
+  contentAdvisoryRating: string
+  country: string
+  feedUrl: string
+  releaseDate: string
 }
 
 export interface PodcastDetail extends DetailItem {
   artistId: number
   artistName: string
-  artworkUrl30: string
-  artworkUrl100: string
-  collectionCensoredName: string
-  collectionExplicitness: string
-  collectionHdPrice: number
-  collectionPrice: number
-  collectionViewUrl: string
   currency: string
   genreIds: string[]
   genres: string[]
   kind: 'podcast'
   primaryGenreName: string
-  trackCensoredName: string
-  trackCount: number
-  trackExplicitness: string
-  trackPrice: number
-  trackRentalPrice: number
   wrapperType: 'track'
 }
 
 export interface Episode extends DetailItem {
   artistIds: any[]
-  artworkUrl160: string
   closedCaptioning: string
   description: string
   episodeContentType: string
