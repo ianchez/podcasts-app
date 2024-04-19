@@ -56,7 +56,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   );
 
   return (
-    <div className='screen row spaced'>
+    <div className='row screen spaced'>
       {sideBar}
       <Outlet />
     </div>
