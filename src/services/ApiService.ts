@@ -1,23 +1,21 @@
-import { PODCASTS_URL, PODCAST_DETAIL_URL } from '../constants/api';
+import {
+  CORS_SERVICE_URL,
+  PODCASTS_URL,
+  PODCAST_DETAIL_URL
+} from '../constants/api';
+import { PodcastDetailResultData, PodcastsResultData } from '../constants/types';
 import HttpClient from './HttpClient';
 
-type ResponseApiAllOriginsType = {
-  contents: string;
-  status: {
-    url: string;
-    content_type: string;
-    http_code: number;
-    response_time: string;
-    content_length: string;
-  };
-};
 
 class ApiService {
-  constructor(private httpClient: typeof HttpClient) {}
+  constructor(
+    private httpClient: typeof HttpClient,
+    private corsServiceUrl: string
+  ) {}
 
-  private async getData(url: string): Promise<ResponseApiAllOriginsType> {
+  private async getData(url: string): Promise<PodcastsResultData | PodcastDetailResultData> {
     try {
-      const response = await this.httpClient.get(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+      const response = await this.httpClient.get(`${this.corsServiceUrl}?url=${encodeURIComponent(url)}`);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -31,14 +29,12 @@ class ApiService {
   };
 
   async getPodcasts() {
-    const data = await this.getData(PODCASTS_URL);
-    return JSON.parse(data.contents);
+    return await this.getData(PODCASTS_URL) as PodcastsResultData;
   };
 
   async getPodcastDetail(id: string, limit?: number) {
-    const data = await this.getData(PODCAST_DETAIL_URL(id, limit));
-    return JSON.parse(data.contents);
+    return await this.getData(PODCAST_DETAIL_URL(id, limit)) as PodcastDetailResultData;
   };
 };
 
-export default new ApiService(HttpClient);
+export default new ApiService(HttpClient, CORS_SERVICE_URL);
