@@ -19,6 +19,7 @@
 }
 
 h5 {
+  font-size: calc(16px + 0.4em);
   margin: 0;
 }
 
