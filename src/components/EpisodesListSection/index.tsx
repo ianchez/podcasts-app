@@ -6,15 +6,20 @@ import { formatDuration } from "../../utils/format";
 
 import './index.css';
 
-const EpisodesListSection: React.FC<{}> = () => {
+const useEpisodeNavigation = () => {
   const navigate = useNavigate();
-
   const { id } = useParams();
-  const { episodes } = useContext(PodcastsContext);
 
-  const onEpisodeClickHandler = (episodeId: number) => {
+  if (!id) return () => {};
+
+  return (episodeId: number) => {
     navigate('/podcast/' + id + '/episode/' + episodeId);
-  }
+  };
+}
+
+const EpisodesListSection: React.FC<{}> = () => {
+  const onEpisodeClickHandler = useEpisodeNavigation();
+  const { episodes } = useContext(PodcastsContext);
 
   return (
     <div id='episodes-list-container'>
