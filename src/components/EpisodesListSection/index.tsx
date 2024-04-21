@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useRouter, useParams } from 'next/navigation'
 
 import { PodcastDetailContext } from "../../contexts/PodcastDetailProvider";
 import { formatDuration } from "../../utils/format";
@@ -7,13 +7,13 @@ import { formatDuration } from "../../utils/format";
 import './index.css';
 
 const useEpisodeNavigation = () => {
-  const navigate = useNavigate();
+  const { push } = useRouter();
   const { id } = useParams();
 
   if (!id) return () => {};
 
   return (episodeId: number) => {
-    navigate('/podcast/' + id + '/episode/' + episodeId);
+    push('/podcast/' + id + '/episode/' + episodeId);
   };
 }
 

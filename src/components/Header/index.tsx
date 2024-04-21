@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation'
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
@@ -8,12 +9,11 @@ import './index.css';
 
 const Header: React.FC<{navigationPath?: string}> = ({navigationPath = '/'}) => {
   // const { state } = useNavigation();
-  // const navigate = useNavigate();
+  const { push } = useRouter();
   const { isLoading: arePodcastsLoading } = useContext(PodcastsContext);
   const { isLoading: isDetailLoading } = useContext(PodcastDetailContext);
 
-  // const handleLogoClick = () => navigate(navigationPath);
-  const handleLogoClick = () => console.log('Logo clicked!');
+  const handleLogoClick = () => push(navigationPath);
 
   const isAppLoading = arePodcastsLoading || isDetailLoading;
   // const showLoadingState = state !== 'idle' || isAppLoading;

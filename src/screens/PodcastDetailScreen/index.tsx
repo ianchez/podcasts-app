@@ -1,14 +1,14 @@
 import { useContext, useEffect } from 'react';
-import { useNavigate, useParams, Outlet } from 'react-router-dom';
+import { useRouter, useParams } from 'next/navigation'
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import './index.css';
 
 const PodcastDetailScreen: React.FC<{}> = () => {
-  const navigate = useNavigate();
+  const { push } = useRouter();
 
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { isLoading: arePodcastsLoading, podcasts } = useContext(PodcastsContext);
   const { isLoading: isDetailLoading, podcastDetail, setPodcastId } = useContext(PodcastDetailContext);
   const selectedPodcast = podcasts.find(podcast => podcast.id.attributes['im:id'] === id);
@@ -18,7 +18,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   }, [id]);
 
   const onPodcastDetailClickHandler = () => {
-    navigate(`/podcast/${id}`);
+    push(`/podcast/${id}`);
   };
 
   // Error handling
@@ -58,7 +58,8 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   return (
     <div className='row screen spaced'>
       {sideBar}
-      <Outlet />
+      {/* TODO: replace with children when transforming into layout component */}
+      {/* <Outlet /> */}
     </div>
 
   );
