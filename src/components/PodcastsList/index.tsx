@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom";
+'use client';
+
+// import { useNavigate } from "react-router-dom";
 import PodcastCard from '../PodcastCard';
 import { Podcast } from "../../constants/types";
 import './index.css';
@@ -21,10 +23,11 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
   filter = '',
   PodcastComponent = PodcastCard
 }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onPodcastClickHandler = (id?: string) => {
-    navigate(`/podcast/${id}`);
+    // navigate(`/podcast/${id}`);
+    console.log(`Podcast clicked: ${id}`);
   };
 
   const filteredPodcasts = useFilteredPodcasts(podcasts, filter);

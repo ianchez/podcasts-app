@@ -14,8 +14,8 @@ const queryClient = new QueryClient();
 import './index.css';
 
 const ContextProviders = reactArrayToTree([
-  <PodcastsProvider />,
-  <PodcastDetailProvider />,
+	<PodcastsProvider />,
+	<PodcastDetailProvider />,
 ]);
 
 export const App: React.FC = () => {

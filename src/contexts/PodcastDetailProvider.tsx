@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useState } from 'react';
 import usePodcastDetailById from '../hooks/usePodcastDetailById';
 import { Episode, PodcastDetail } from '../constants/types';

@@ -1,0 +1,8 @@
+#podcasts-counter {
+  color: white;
+  border-radius: 0.4em;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 0.1em 0.3em;
+  background-color: var(--color-light-blue);
+}

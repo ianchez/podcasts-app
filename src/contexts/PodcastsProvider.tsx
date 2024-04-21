@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext } from 'react';
 import usePodcasts from '../hooks/usePodcasts';
 import { Podcast } from '../constants/types';
