@@ -8,6 +8,7 @@ class ApiService {
   ) {}
 
   async getData(url: string): Promise<any> {
+    'use server';
     try {
       const response = await this.httpClient.get(
         `${this.corsServiceUrl}?url=${encodeURIComponent(url)}`,
