@@ -3,7 +3,7 @@ import { useFetchPodcasts } from '../services/usePodcastDataService';
 import { Podcast } from '../constants/types';
 
 const usePodcastsHook = () => {
-  const [ podcasts, setPodcasts ] = useState<Podcast[]>([]);
+  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
 
   const { isLoading, data } = useFetchPodcasts();
 
@@ -11,12 +11,12 @@ const usePodcastsHook = () => {
     if (!isLoading) {
       setPodcasts(data?.feed.entry || []);
     }
-  } , [isLoading, data?.feed.entry]);
+  }, [isLoading, data?.feed.entry]);
 
   return {
     isLoading,
     podcasts,
   };
-}
+};
 
 export default usePodcastsHook;

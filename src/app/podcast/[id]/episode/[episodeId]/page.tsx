@@ -8,6 +8,6 @@ const EpisodePage: React.FC<{}> = () => {
   const { episodeId } = useParams<{ episodeId: string }>();
 
   return <EpisodeDetailSection episodeId={episodeId} />;
-}
+};
 
 export default EpisodePage;

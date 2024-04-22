@@ -13,11 +13,11 @@ const EpisodeDetailSection: React.FC<{ episodeId: string }> = ({ episodeId }) =>
 
   // Render
   return (
-    <section id='episode-detail-container'>
+    <section id="episode-detail-container">
       <h5>{currentEpisode.trackName}</h5>
 
       <p
-        id='episode-description'
+        id="episode-description"
         // Episode description could contain HTML tags
         dangerouslySetInnerHTML={{ __html: currentEpisode.description }}
       />
@@ -26,7 +26,7 @@ const EpisodeDetailSection: React.FC<{ episodeId: string }> = ({ episodeId }) =>
 
       <audio
         controls
-        controlsList='nodownload'
+        controlsList="nodownload"
         style={{
           marginBottom: '1vw',
           width: '100%',
@@ -37,6 +37,6 @@ const EpisodeDetailSection: React.FC<{ episodeId: string }> = ({ episodeId }) =>
       </audio>
     </section>
   );
-}
+};
 
 export default EpisodeDetailSection;

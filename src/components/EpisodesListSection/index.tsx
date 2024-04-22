@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { useRouter, useParams } from 'next/navigation'
+import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { PodcastDetailContext } from "../../contexts/PodcastDetailProvider";
-import { formatDuration } from "../../utils/format";
+import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
+import { formatDuration } from '../../utils/format';
 
 import './index.css';
-import SCREENS from "../../constants/screens";
+import SCREENS from '../../constants/screens';
 
 const useEpisodeNavigation = (podcastId: string) => {
   const { push } = useRouter();
@@ -13,21 +13,23 @@ const useEpisodeNavigation = (podcastId: string) => {
   if (!podcastId) return () => {};
 
   return (episodeId: number) => {
-    push(SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(podcastId, episodeId.toString()));
+    push(
+      SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(podcastId, episodeId.toString()),
+    );
   };
-}
+};
 
 const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => {
   const onEpisodeClickHandler = useEpisodeNavigation(podcastId);
   const { episodes } = useContext(PodcastDetailContext);
 
   return (
-    <section id='episodes-list-container'>
-      <div id='list-header'>
+    <section id="episodes-list-container">
+      <div id="list-header">
         <h5>Episodes: {episodes.length}</h5>
       </div>
 
-      <div id='list-content'>
+      <div id="list-content">
         <table>
           <thead>
             <tr>
@@ -37,12 +39,9 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
             </tr>
           </thead>
           <tfoot>
-            {episodes.map(episode => (
+            {episodes.map((episode) => (
               <tr key={episode.trackId}>
-                <td
-                  className='pressable'
-                  onClick={() => onEpisodeClickHandler(episode.trackId)}
-                >
+                <td className="pressable" onClick={() => onEpisodeClickHandler(episode.trackId)}>
                   {episode.trackName}
                 </td>
                 <td>{new Date(episode.releaseDate).toLocaleDateString()}</td>
@@ -54,6 +53,6 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
       </div>
     </section>
   );
-}
+};
 
 export default EpisodesListSection;

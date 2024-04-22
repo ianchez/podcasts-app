@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 'use client';
 
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import reactArrayToTree from 'react-array-to-tree';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -12,19 +13,20 @@ import PodcastDetailProvider from 'src/contexts/PodcastDetailProvider';
 const queryClient = new QueryClient();
 
 const ContextProviders = reactArrayToTree([
-	<PodcastsProvider />,
-	<PodcastDetailProvider />,
+  // All context providers should be added here
+  <PodcastsProvider />,
+  <PodcastDetailProvider />,
 ]);
 
-const Providers: React.FC<{children: ReactNode}> = ({children}) => {
-	return (
+const Providers: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return (
     <QueryClientProvider client={queryClient}>
       <ContextProviders>
         <ReactQueryDevtools initialIsOpen />
         {children}
       </ContextProviders>
     </QueryClientProvider>
-	);
-}
+  );
+};
 
 export default Providers;

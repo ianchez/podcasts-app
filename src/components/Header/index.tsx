@@ -1,14 +1,14 @@
 'use client';
 
 import { useContext } from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import SCREENS from '../../constants/screens';
 import './index.css';
 
-const Header: React.FC<{navigationPath?: string}> = ({navigationPath = SCREENS.HOME.PATH}) => {
+const Header: React.FC<{ navigationPath?: string }> = ({ navigationPath = SCREENS.HOME.PATH }) => {
   // const { state } = useNavigation();
   const { push } = useRouter();
   const { isLoading: arePodcastsLoading } = useContext(PodcastsContext);
@@ -21,17 +21,14 @@ const Header: React.FC<{navigationPath?: string}> = ({navigationPath = SCREENS.H
   const showLoadingState = isAppLoading;
 
   return (
-    <div className='header'>
-      <h5
-        className="pressable"
-        onClick={handleLogoClick}
-      >
+    <div className="header">
+      <h5 className="pressable" onClick={handleLogoClick}>
         Podcaster
       </h5>
 
-      {showLoadingState && <span className='pulsating-circle' />}
+      {showLoadingState && <span className="pulsating-circle" />}
     </div>
   );
-}
+};
 
 export default Header;

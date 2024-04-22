@@ -1,4 +1,4 @@
-import { Podcast, PodcastDetail } from "src/constants/types";
+import { Podcast, PodcastDetail } from 'src/constants/types';
 
 type PodcastSideBarProps = {
   podcastDetail: PodcastDetail;
@@ -6,31 +6,35 @@ type PodcastSideBarProps = {
   onSideBarClick: () => void;
 };
 
-const PodcastSideBar: React.FC<PodcastSideBarProps> = ({ podcastDetail, selectedPodcast, onSideBarClick }) => (
-  <section id='side-bar-container'>
+const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
+  podcastDetail,
+  selectedPodcast,
+  onSideBarClick,
+}) => (
+  <section id="side-bar-container">
     <img
-      className='pressable'
-      role='button'
+      className="pressable"
+      role="button"
       onClick={onSideBarClick}
-      src={podcastDetail.artworkUrl600} 
+      src={podcastDetail.artworkUrl600}
       alt={podcastDetail.collectionName}
     />
 
     <hr />
 
-    <h6
-      className='pressable'
-      role='button'
-      onClick={onSideBarClick}
-    >
+    <h6 className="pressable" role="button" onClick={onSideBarClick}>
       {podcastDetail.collectionName}
     </h6>
-    <p><i>By {podcastDetail.artistName}</i></p>
+    <p>
+      <i>By {podcastDetail.artistName}</i>
+    </p>
 
     <hr />
 
-    <h6 id='description'>Description:</h6>
-    <p><i>{selectedPodcast.summary.label}</i></p>
+    <h6 id="description">Description:</h6>
+    <p>
+      <i>{selectedPodcast.summary.label}</i>
+    </p>
   </section>
 );
 

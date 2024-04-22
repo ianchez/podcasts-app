@@ -10,20 +10,17 @@ const HomeScreen: React.FC<{}> = () => {
 
   return (
     <div className="screen">
-      <div className='row end'>
-        <p id='podcasts-counter'>{podcasts.length}</p>
+      <div className="row end">
+        <p id="podcasts-counter">{podcasts.length}</p>
         <input
-          type='text'
-          placeholder='Filter podcasts...'
+          type="text"
+          placeholder="Filter podcasts..."
           value={filter}
-          onChange={({target}) => setFilter(target.value)}
+          onChange={({ target }) => setFilter(target.value)}
         />
       </div>
 
-      {isLoading
-        ? <p>Loading...</p>
-        : <PodcastsList podcasts={podcasts} filter={filter} />
-      }
+      {isLoading ? <p>Loading...</p> : <PodcastsList podcasts={podcasts} filter={filter} />}
     </div>
   );
 };

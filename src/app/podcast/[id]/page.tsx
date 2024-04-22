@@ -8,6 +8,6 @@ const PodcastPage: React.FC<{}> = () => {
   const { id } = useParams<{ id: string }>();
 
   return <EpisodesListSection podcastId={id} />;
-}
+};
 
 export default PodcastPage;

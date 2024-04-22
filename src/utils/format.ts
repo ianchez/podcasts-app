@@ -12,7 +12,5 @@ export const formatDuration = (milliseconds?: number): string => {
 
   const minutesAndSeconds = `${paddedMinutes}:${paddedSeconds}`;
 
-  return hours > 0
-    ? `${hours}:${minutesAndSeconds}`
-    : minutesAndSeconds;
+  return hours > 0 ? `${hours}:${minutesAndSeconds}` : minutesAndSeconds;
 };

@@ -20,14 +20,12 @@ const INITIAL_STATE: podcastDetailState = {
 
 export const PodcastDetailContext = createContext(INITIAL_STATE);
 
-export const PodcastDetailProvider: React.FC<{children?: React.ReactNode}> = ({ children }) => {
-  const [ podcastId, setPodcastId ] = useState('');
+export const PodcastDetailProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+  const [podcastId, setPodcastId] = useState('');
   const { isLoading, podcastDetail, episodes } = usePodcastDetailById(podcastId);
 
   return (
-    <PodcastDetailContext.Provider
-      value={{ isLoading, podcastDetail, episodes, setPodcastId }}
-    >
+    <PodcastDetailContext.Provider value={{ isLoading, podcastDetail, episodes, setPodcastId }}>
       {children}
     </PodcastDetailContext.Provider>
   );
