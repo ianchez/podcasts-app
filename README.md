@@ -17,9 +17,10 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 ### Technologies
 - React 18
 - Typescript
-- react-router-dom (for routing)
+- Next.js (for server-side rendering and routing)
 - react-query (for data fetching and cache)
 - eslint (for linting on local development)
+- prettier (for code formatting)
 
 ## Installation
 1. Clone the repository
@@ -31,7 +32,7 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -44,7 +45,7 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn run build`
+### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
