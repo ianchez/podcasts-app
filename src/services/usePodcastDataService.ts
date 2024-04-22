@@ -17,4 +17,5 @@ export const useFetchPodcastDetailById = (id: string, limit?: number) =>
     queryFn: async () =>
       (await ApiService.getData(PODCAST_DETAIL_URL(id, limit))) as PodcastDetailResultData,
     staleTime: CACHE_TIME,
+    enabled: !!id,
   });
