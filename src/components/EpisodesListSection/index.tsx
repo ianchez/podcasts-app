@@ -5,6 +5,7 @@ import { PodcastDetailContext } from "../../contexts/PodcastDetailProvider";
 import { formatDuration } from "../../utils/format";
 
 import './index.css';
+import SCREENS from "../../constants/screens";
 
 const useEpisodeNavigation = () => {
   const { push } = useRouter();
@@ -13,7 +14,7 @@ const useEpisodeNavigation = () => {
   if (!id) return () => {};
 
   return (episodeId: number) => {
-    push('/podcast/' + id + '/episode/' + episodeId);
+    push(SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(id, episodeId.toString()));
   };
 }
 

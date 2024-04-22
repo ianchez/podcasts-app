@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import PodcastCard from '../PodcastCard';
 import { Podcast } from "src/constants/types";
 import './index.css';
+import SCREENS from "../../constants/screens";
 
 const useFilteredPodcasts = (podcasts: Podcast[], filter: string) =>
   podcasts.filter((podcast) => 
@@ -25,8 +26,8 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
 }) => {
   const { push } = useRouter();
 
-  const onPodcastClickHandler = (id?: string) => {
-    push(`/podcast/${id}`);
+  const onPodcastClickHandler = (id: string) => {
+    push(SCREENS.PODCAST_DETAIL.PATH_BUILDER(id));
   };
 
   const filteredPodcasts = useFilteredPodcasts(podcasts, filter);

@@ -4,6 +4,7 @@ import { useRouter, useParams } from 'next/navigation'
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import './index.css';
+import SCREENS from '../../constants/screens';
 
 const PodcastDetailScreen: React.FC<{}> = () => {
   const { push } = useRouter();
@@ -18,7 +19,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   }, [id]);
 
   const onPodcastDetailClickHandler = () => {
-    push(`/podcast/${id}`);
+    push(SCREENS.PODCAST_DETAIL.PATH_BUILDER(id ?? ''));
   };
 
   // Error handling

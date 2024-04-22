@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation'
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
+import SCREENS from '../../constants/screens';
 import './index.css';
 
-const Header: React.FC<{navigationPath?: string}> = ({navigationPath = '/'}) => {
+const Header: React.FC<{navigationPath?: string}> = ({navigationPath = SCREENS.HOME.PATH}) => {
   // const { state } = useNavigation();
   const { push } = useRouter();
   const { isLoading: arePodcastsLoading } = useContext(PodcastsContext);
