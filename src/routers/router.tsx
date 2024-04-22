@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 // Screens
+import SCREENS from '../constants/screens';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import RootLayout from '../screens/RootLayout';
 import HomeScreen from '../screens/HomeScreen';
@@ -27,22 +28,22 @@ const routes = [
     errorElement: <ErrorScreen />,
     children: [
       {
-        path: '/',
+        path: SCREENS.HOME.PATH,
         element: <HomeScreen />,
         loader,
       },
       {
-        path: '/podcast/:id',
+        path: SCREENS.PODCAST_DETAIL.PATH,
         element: <PodcastDetailScreen />,
         loader,
         children: [
           {
-            path: '/podcast/:id/',
+            path: SCREENS.PODCAST_DETAIL.SECTIONS.EPISODES_LIST.PATH,
             element: <EpisodesListSection />,
             loader,
           },
           {
-            path: '/podcast/:id/episode/:episodeId',
+            path: SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH,
             element: <EpisodeDetailSection />,
             loader,
           }

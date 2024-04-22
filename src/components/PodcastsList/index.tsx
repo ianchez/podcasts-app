@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import PodcastCard from '../PodcastCard';
 import { Podcast } from "../../constants/types";
 import './index.css';
+import SCREENS from "../../constants/screens";
 
 const useFilteredPodcasts = (podcasts: Podcast[], filter: string) =>
   podcasts.filter((podcast) => 
@@ -23,8 +24,8 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
 }) => {
   const navigate = useNavigate();
 
-  const onPodcastClickHandler = (id?: string) => {
-    navigate(`/podcast/${id}`);
+  const onPodcastClickHandler = (id: string) => {
+    navigate(SCREENS.PODCAST_DETAIL.PATH_BUILDER(id));
   };
 
   const filteredPodcasts = useFilteredPodcasts(podcasts, filter);

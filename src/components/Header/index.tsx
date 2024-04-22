@@ -3,9 +3,10 @@ import { useNavigate, useNavigation } from 'react-router-dom';
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
+import SCREENS from '../../constants/screens';
 import './index.css';
 
-const Header: React.FC<{navigationPath?: string}> = ({navigationPath = '/'}) => {
+const Header: React.FC<{navigationPath?: string}> = ({navigationPath = SCREENS.HOME.PATH}) => {
   const { state } = useNavigation();
   const navigate = useNavigate();
   const { isLoading: arePodcastsLoading } = useContext(PodcastsContext);
