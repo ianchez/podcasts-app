@@ -18,7 +18,15 @@ const PodcastCard: React.FC<PodcastCardPropsType> = ({ podcast, onPodcastClick }
     <div className="podcast-item">
       <span className="transparent" />
       <div className="pressable shifted-container" onClick={onPodcastClickHandler}>
-        <Image src={podcast['im:image'][2].label} alt={podcast['im:name'].label} />
+        <div className="image-container">
+          <Image
+            fill
+            src={podcast['im:image'][2].label}
+            alt={podcast['im:name'].label}
+            quality={100}
+            sizes="170px"
+          />
+        </div>
         <h5>{podcast['im:name'].label}</h5>
         <p>Author: {podcast['im:artist'].label}</p>
       </div>

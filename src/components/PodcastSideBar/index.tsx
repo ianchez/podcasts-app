@@ -1,6 +1,8 @@
 import { Podcast, PodcastDetail } from 'src/constants/types';
 import Image from 'next/image';
 
+import './index.css';
+
 type PodcastSideBarProps = {
   podcastDetail: PodcastDetail;
   selectedPodcast: Podcast;
@@ -13,13 +15,18 @@ const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
   onSideBarClick,
 }) => (
   <section id="side-bar-container">
-    <Image
-      className="pressable"
-      role="button"
-      onClick={onSideBarClick}
-      src={podcastDetail.artworkUrl600}
-      alt={podcastDetail.collectionName}
-    />
+    <div id="img-container">
+      <Image
+        fill
+        className="pressable"
+        role="button"
+        onClick={onSideBarClick}
+        src={podcastDetail.artworkUrl600}
+        alt={podcastDetail.collectionName}
+        quality={100}
+        sizes="(max-width: 850px) 152px, 30vw"
+      />
+    </div>
 
     <hr />
 
