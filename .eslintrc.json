@@ -1,8 +1,10 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:n/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:prettier/recommended"
-  ]
+  ],
+  "rules": {
+
+  }
 }
