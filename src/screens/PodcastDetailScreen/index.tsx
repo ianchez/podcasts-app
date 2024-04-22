@@ -3,6 +3,8 @@ import { useRouter } from 'next/navigation';
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
+
+import LoadingScreen from '../LoadingScreen';
 import PodcastSideBar from 'src/components/PodcastSideBar';
 import SCREENS from '../../constants/screens';
 
@@ -31,19 +33,8 @@ const PodcastDetailScreen: React.FC<PodcastDetailScreenProps> = ({ children, id 
   };
 
   // Error handling
-  if (arePodcastsLoading || isDetailLoading)
-    return (
-      <div className="screen">
-        <h4>Loading...</h4>
-      </div>
-    );
-  if (!podcastDetail || !selectedPodcast) {
-    return (
-      <div className="screen">
-        <h4>Podcast Not Found</h4>
-      </div>
-    );
-  }
+  if (arePodcastsLoading || isDetailLoading) return <LoadingScreen />;
+  if (!podcastDetail || !selectedPodcast) return <PodcastNotFound />;
 
   return (
     <div className="row screen spaced">
@@ -56,5 +47,11 @@ const PodcastDetailScreen: React.FC<PodcastDetailScreenProps> = ({ children, id 
     </div>
   );
 };
+
+const PodcastNotFound: React.FC<{}> = () => (
+  <div className="screen">
+    <h4>Podcast Not Found</h4>
+  </div>
+);
 
 export default PodcastDetailScreen;

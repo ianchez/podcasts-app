@@ -1,12 +1,15 @@
 import { useContext, useState } from 'react';
-import { PodcastsContext } from '../../contexts/PodcastsProvider';
+import { PodcastsContext } from 'src/contexts/PodcastsProvider';
 
-import PodcastsList from '../../components/PodcastsList';
+import LoadingScreen from '../LoadingScreen';
+import PodcastsList from 'src/components/PodcastsList';
 import './index.css';
 
 const HomeScreen: React.FC<{}> = () => {
   const { isLoading, podcasts } = useContext(PodcastsContext);
   const [filter, setFilter] = useState('');
+
+  if (isLoading) return <LoadingScreen />;
 
   return (
     <div className="screen">
@@ -20,7 +23,7 @@ const HomeScreen: React.FC<{}> = () => {
         />
       </div>
 
-      {isLoading ? <p>Loading...</p> : <PodcastsList podcasts={podcasts} filter={filter} />}
+      <PodcastsList podcasts={podcasts} filter={filter} />
     </div>
   );
 };
