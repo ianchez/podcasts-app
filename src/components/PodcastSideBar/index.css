@@ -21,9 +21,13 @@
 
 #side-bar-container img {
   border-radius: 3%;
+}
+
+#img-container {
+  aspect-ratio: 1/1;
+  position: relative;
   margin-top: 6px;
-  max-height: 80%;
-  max-width: 80%;
+  width: 80%;
 }
 
 #side-bar-container h6, #side-bar-container p {

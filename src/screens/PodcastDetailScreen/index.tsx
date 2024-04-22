@@ -6,8 +6,6 @@ import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import PodcastSideBar from 'src/components/PodcastSideBar';
 import SCREENS from '../../constants/screens';
 
-import './index.css';
-
 type PodcastDetailScreenProps = {
   children: React.ReactNode;
   id: string;
