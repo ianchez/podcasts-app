@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
+import PodcastSideBar from 'src/components/PodcastSideBar';
 import SCREENS from '../../constants/screens';
 
 import './index.css';
@@ -33,37 +34,13 @@ const PodcastDetailScreen: React.FC<PodcastDetailScreenProps> = ({ children, id 
     return <div className='screen'><h4>Podcast Not Found</h4></div>;
   }
 
-  const sideBar = (
-    <div id='side-bar-container'>
-      <img
-        className='pressable'
-        role='button'
-        onClick={onPodcastDetailClickHandler}
-        src={podcastDetail.artworkUrl600} 
-        alt={podcastDetail.collectionName}
-      />
-
-      <hr />
-
-      <h6
-        className='pressable'
-        role='button'
-        onClick={onPodcastDetailClickHandler}
-      >
-        {podcastDetail.collectionName}
-      </h6>
-      <p><i>By {podcastDetail.artistName}</i></p>
-
-      <hr />
-
-      <h6 id='description'>Description:</h6>
-      <p><i>{selectedPodcast.summary.label}</i></p>
-    </div>
-  );
-
   return (
     <div className='row screen spaced'>
-      {sideBar}
+      <PodcastSideBar
+        podcastDetail={podcastDetail}
+        selectedPodcast={selectedPodcast}
+        onSideBarClick={onPodcastDetailClickHandler}
+      />
       {children}
     </div>
 
