@@ -10,7 +10,7 @@ export default function Error({
   console.error(error);
 
   return (
-    <div>
+    <div className="screen">
       <h2>Something went wrong!</h2>
       <button onClick={() => reset()}>Try again</button>
     </div>
