@@ -1,11 +1,13 @@
+'use client';
+
 import { useContext } from "react";
 import { useRouter, useParams } from 'next/navigation'
 
-import { PodcastDetailContext } from "../../contexts/PodcastDetailProvider";
-import { formatDuration } from "../../utils/format";
+import { PodcastDetailContext } from "src/contexts/PodcastDetailProvider";
+import { formatDuration } from "src/utils/format";
+import SCREENS from "src/constants/screens";
 
-import './index.css';
-import SCREENS from "../../constants/screens";
+import './page.css';
 
 const useEpisodeNavigation = () => {
   const { push } = useRouter();
