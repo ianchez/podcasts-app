@@ -17,7 +17,7 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 ### Technologies
 - React 18
 - Typescript
-- Next.js (for server-side rendering and routing)
+- Next.js (for server-side rendering, routing and image optimization)
 - react-query (for data fetching and cache)
 - eslint (for linting on local development)
 - prettier (for code formatting)

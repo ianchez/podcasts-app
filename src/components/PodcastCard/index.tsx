@@ -1,4 +1,5 @@
 import { Podcast } from '../../constants/types';
+import Image from 'next/image';
 
 import './index.css';
 
@@ -17,7 +18,7 @@ const PodcastCard: React.FC<PodcastCardPropsType> = ({ podcast, onPodcastClick }
     <div className="podcast-item">
       <span className="transparent" />
       <div className="pressable shifted-container" onClick={onPodcastClickHandler}>
-        <img src={podcast['im:image'][2].label} alt={podcast['im:name'].label} />
+        <Image src={podcast['im:image'][2].label} alt={podcast['im:name'].label} />
         <h5>{podcast['im:name'].label}</h5>
         <p>Author: {podcast['im:artist'].label}</p>
       </div>

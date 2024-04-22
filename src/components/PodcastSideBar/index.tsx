@@ -1,4 +1,5 @@
 import { Podcast, PodcastDetail } from 'src/constants/types';
+import Image from 'next/image';
 
 type PodcastSideBarProps = {
   podcastDetail: PodcastDetail;
@@ -12,7 +13,7 @@ const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
   onSideBarClick,
 }) => (
   <section id="side-bar-container">
-    <img
+    <Image
       className="pressable"
       role="button"
       onClick={onSideBarClick}
