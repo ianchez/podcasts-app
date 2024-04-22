@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
-import './layout.css';
-import Providers from './providers';
+import Providers from 'src/providers/providers';
 import Header from 'src/components/Header';
+
+import './index.css';
 
 export const metadata: Metadata = {
   title: 'Podcaster App',

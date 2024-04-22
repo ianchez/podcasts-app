@@ -1,62 +1,13 @@
 'use client';
 
-import { useContext } from "react";
-import { useRouter, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation';
 
-import { PodcastDetailContext } from "src/contexts/PodcastDetailProvider";
-import { formatDuration } from "src/utils/format";
-import SCREENS from "src/constants/screens";
+import EpisodesListSection from 'src/components/EpisodesListSection';
 
-import './page.css';
-
-const useEpisodeNavigation = () => {
-  const { push } = useRouter();
+const PodcastPage: React.FC<{}> = () => {
   const { id } = useParams<{ id: string }>();
 
-  if (!id) return () => {};
-
-  return (episodeId: number) => {
-    push(SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(id, episodeId.toString()));
-  };
+  return <EpisodesListSection podcastId={id} />;
 }
 
-const EpisodesListSection: React.FC<{}> = () => {
-  const onEpisodeClickHandler = useEpisodeNavigation();
-  const { episodes } = useContext(PodcastDetailContext);
-
-  return (
-    <div id='episodes-list-container'>
-      <div id='list-header'>
-        <h5>Episodes: {episodes.length}</h5>
-      </div>
-
-      <div id='list-content'>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Duration</th>
-            </tr>
-          </thead>
-          <tfoot>
-            {episodes.map(episode => (
-              <tr key={episode.trackId}>
-                <td
-                  className='pressable'
-                  onClick={() => onEpisodeClickHandler(episode.trackId)}
-                >
-                  {episode.trackName}
-                </td>
-                <td>{new Date(episode.releaseDate).toLocaleDateString()}</td>
-                <td>{formatDuration(episode.trackTimeMillis)}</td>
-              </tr>
-            ))}
-          </tfoot>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-export default EpisodesListSection;
+export default PodcastPage;

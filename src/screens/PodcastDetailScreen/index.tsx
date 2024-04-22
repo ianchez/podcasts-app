@@ -1,15 +1,20 @@
 import { useContext, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { PodcastsContext } from '../../contexts/PodcastsProvider';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
-import './index.css';
 import SCREENS from '../../constants/screens';
 
-const PodcastDetailScreen: React.FC<{}> = () => {
+import './index.css';
+
+type PodcastDetailScreenProps = {
+  children: React.ReactNode;
+  id: string;
+};
+
+const PodcastDetailScreen: React.FC<PodcastDetailScreenProps> = ({ children, id }) => {
   const { push } = useRouter();
 
-  const { id } = useParams<{ id: string }>();
   const { isLoading: arePodcastsLoading, podcasts } = useContext(PodcastsContext);
   const { isLoading: isDetailLoading, podcastDetail, setPodcastId } = useContext(PodcastDetailContext);
   const selectedPodcast = podcasts.find(podcast => podcast.id.attributes['im:id'] === id);
@@ -59,8 +64,7 @@ const PodcastDetailScreen: React.FC<{}> = () => {
   return (
     <div className='row screen spaced'>
       {sideBar}
-      {/* TODO: replace with children when transforming into layout component */}
-      {/* <Outlet /> */}
+      {children}
     </div>
 
   );

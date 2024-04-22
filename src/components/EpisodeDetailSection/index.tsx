@@ -1,11 +1,9 @@
 import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 
 import './index.css';
 
-const EpisodeDetailSection: React.FC<{}> = () => {
-  const { episodeId } = useParams();
+const EpisodeDetailSection: React.FC<{ episodeId: string }> = ({ episodeId }) => {
   const { isLoading, episodes } = useContext(PodcastDetailContext);
   const currentEpisode = episodes.find((item: any) => `${item.trackId}` === episodeId);
 
@@ -15,7 +13,7 @@ const EpisodeDetailSection: React.FC<{}> = () => {
 
   // Render
   return (
-    <div id='episode-detail-container'>
+    <section id='episode-detail-container'>
       <h5>{currentEpisode.trackName}</h5>
 
       <p
@@ -37,7 +35,7 @@ const EpisodeDetailSection: React.FC<{}> = () => {
         <source src={currentEpisode.episodeUrl} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-    </div>
+    </section>
   );
 }
 

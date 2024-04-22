@@ -7,23 +7,22 @@ import { formatDuration } from "../../utils/format";
 import './index.css';
 import SCREENS from "../../constants/screens";
 
-const useEpisodeNavigation = () => {
+const useEpisodeNavigation = (podcastId: string) => {
   const { push } = useRouter();
-  const { id } = useParams<{ id: string }>();
 
-  if (!id) return () => {};
+  if (!podcastId) return () => {};
 
   return (episodeId: number) => {
-    push(SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(id, episodeId.toString()));
+    push(SCREENS.PODCAST_DETAIL.SECTIONS.EPISODE_DETAIL.PATH_BUILDER(podcastId, episodeId.toString()));
   };
 }
 
-const EpisodesListSection: React.FC<{}> = () => {
-  const onEpisodeClickHandler = useEpisodeNavigation();
+const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => {
+  const onEpisodeClickHandler = useEpisodeNavigation(podcastId);
   const { episodes } = useContext(PodcastDetailContext);
 
   return (
-    <div id='episodes-list-container'>
+    <section id='episodes-list-container'>
       <div id='list-header'>
         <h5>Episodes: {episodes.length}</h5>
       </div>
@@ -53,7 +52,7 @@ const EpisodesListSection: React.FC<{}> = () => {
           </tfoot>
         </table>
       </div>
-    </div>
+    </section>
   );
 }
 
