@@ -18,9 +18,11 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - React 18
 - Typescript
 - Next.js (for server-side rendering, routing and image optimization)
-- react-query (for data fetching and cache)
-- eslint (for linting on local development)
-- prettier (for code formatting)
+- React-query (for data fetching, cache, and disabling unnecessary fetching)
+  - Using cache on data fetches the app feels more responsive specially when returning to previously visited pages.
+  The cache is set to 24 hours (1 day).
+- Eslint (for linting on local development)
+- Prettier (for code formatting)
 
 ## Installation
 1. Clone the repository
@@ -47,10 +49,14 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `./dist` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `yarn start`
+
+Runs the app in the production mode.\
+Requires the app to be built first with `yarn build`.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
