@@ -5,7 +5,7 @@ const usePodcastsHook = () => {
 
   return {
     isLoading,
-    podcasts: data?.feed.entry || [],
+    podcasts: data?.feed?.entry || [],
   };
 };
 
