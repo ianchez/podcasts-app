@@ -1,6 +1,10 @@
-export const CORS_SERVICE_URL = 'https://api.allorigins.win/raw';
-export const PODCASTS_URL = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json';
-export const PODCAST_DETAIL_URL = (id: string, limit = 20): string =>
-  `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=${limit}`;
+export const CORS_SERVICE_URL = process.env.CORS_SERVICE_URL ?? 'https://api.allorigins.win/raw';
+export const PODCASTS_URL = process.env.NEXT_PUBLIC_ITUNES_PODCASTS_URL ?? '';
+export const PODCAST_DETAIL_URL = (id: string, limit = 20): string => {
+  const podcastsUrl = process.env.NEXT_PUBLIC_ITUNES_EPISODES_URL ?? '';
+  return podcastsUrl.replace('{id}', id).replace('{limit}', limit.toString());
+};
 
-export const CACHE_TIME = 1000 * 60 * 60 * 24; // 1 day
+export const CACHE_TIME = process.env.NEXT_PUBLIC_CACHE_TIME_IN_MINUTES
+  ? Number(process.env.NEXT_PUBLIC_CACHE_TIME_IN_MINUTES ?? '') * 1000 * 60
+  : 1000 * 60 * 60 * 24; // 1 day
