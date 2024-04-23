@@ -8,6 +8,10 @@
     "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  },
   "rules": {
     "no-unused-vars": ["error", {
       "args": "none"
