@@ -1,11 +1,13 @@
 # podcasts-app-ts
 React / Typescript SPA - Showing the latest popular podcasts
 
-## Description
+---
+### Description
 
 This is a simple React / Typescript SPA that shows the latest popular podcasts in iTunes.
 The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json) to fetch the data.
 
+---
 ### Features
 - The app shows the top 100 podcasts in the iTunes API
 - The user can filter the podcasts by title
@@ -24,6 +26,7 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - Eslint (for linting on local development)
 - Prettier (for code formatting)
 
+---
 #### Room for improvements
 - Add tests
 - Make use of full server side rendering without affecting the performance
@@ -34,6 +37,7 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - Include other data sources like Spotify, Google Podcasts, etc.
 - Allow the user to add podcasts / episodes to a favorites list
 
+---
 ## Installation
 1. Clone the repository
 2. Create a `.env.local` file in the root of the project following the structure of the `.env.example` file
@@ -42,6 +46,7 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 4. Make sure you have **yarn** configured. If not, check the [yarn getting-started guide](https://yarnpkg.com/getting-started)
 5. Run `yarn install` to install the dependencies
 
+---
 ## Available Scripts
 
 In the project directory, you can run:
@@ -53,6 +58,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn test`
+
+Runs the tests in the project.
+
+### `yarn lint`
+
+Runs the linter in the project.
 
 ### `yarn build`
 
