@@ -24,6 +24,16 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - Eslint (for linting on local development)
 - Prettier (for code formatting)
 
+#### Room for improvements
+- Add tests
+- Make use of full server side rendering without affecting the performance
+- Show more information about the podcast like genre, release date, etc.
+- Add additional filters like by author, genre, etc.
+- Add filters to the episode list
+- Add pagination to the podcast list and the episode list (API allows pagination)
+- Include other data sources like Spotify, Google Podcasts, etc.
+- Allow the user to add podcasts / episodes to a favorites list
+
 ## Installation
 1. Clone the repository
 2. You need **Node.js** installed. I recommend using NVM [github repository](https://github.com/nvm-sh/nvm)
