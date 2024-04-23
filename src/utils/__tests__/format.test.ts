@@ -1,4 +1,4 @@
-import { formatDuration } from './format';
+import { formatDuration } from '../format';
 
 describe('Utils: formatDuration', () => {
   it('should return 00:00 if input is 0', () => {
