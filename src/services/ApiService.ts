@@ -30,8 +30,8 @@ class ApiService {
     }
   }
 
-  public async getPodcasts(): Promise<PodcastsResultData> {
-    return this.getData(PODCASTS_URL);
+  public async getPodcasts(limit?: number): Promise<PodcastsResultData> {
+    return this.getData(PODCASTS_URL(limit));
   }
 
   public async getPodcastDetailById(id: string, limit?: number): Promise<PodcastDetailResultData> {
