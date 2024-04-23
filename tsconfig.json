@@ -28,6 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./dist/types/**/*.ts",
+    "./jest-setup.ts",
     "eslint.config.mjs",
   ],
   "exclude": ["node_modules"]
