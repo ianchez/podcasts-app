@@ -36,9 +36,11 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 
 ## Installation
 1. Clone the repository
-2. You need **Node.js** installed. I recommend using NVM [github repository](https://github.com/nvm-sh/nvm)
-3. Make sure you have **yarn** configured. If not, check the [yarn getting-started guide](https://yarnpkg.com/getting-started)
-4. Run `yarn install` to install the dependencies
+2. Create a `.env.local` file in the root of the project following the structure of the `.env.example` file
+    - A default config is already provided in the `.env.example` file
+3. You need **Node.js** installed. I recommend using NVM [github repository](https://github.com/nvm-sh/nvm)
+4. Make sure you have **yarn** configured. If not, check the [yarn getting-started guide](https://yarnpkg.com/getting-started)
+5. Run `yarn install` to install the dependencies
 
 ## Available Scripts
 
