@@ -21,13 +21,13 @@ const Header: React.FC<{ navigationPath?: string }> = ({ navigationPath = SCREEN
   const showLoadingState = isAppLoading;
 
   return (
-    <div className="header">
+    <header className="header">
       <h5 className="pressable" onClick={handleLogoClick}>
         Podcaster
       </h5>
 
       {showLoadingState && <span className="pulsating-circle" />}
-    </div>
+    </header>
   );
 };
 

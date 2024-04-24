@@ -14,7 +14,7 @@ const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
   selectedPodcast,
   onSideBarClick,
 }) => (
-  <section id="side-bar-container">
+  <aside id="side-bar-container">
     <div id="img-container">
       <Image
         fill
@@ -43,11 +43,11 @@ const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
     <p>
       <i>{selectedPodcast.summary.label}</i>
     </p>
-  </section>
+  </aside>
 );
 
 export const PodcastSideBarSkeleton: React.FC<{}> = () => (
-  <section id="side-bar-container" className="skeleton">
+  <aside id="side-bar-container" className="skeleton">
     <div id="img-container">
       <div id="img-skeleton" />
     </div>
@@ -69,7 +69,7 @@ export const PodcastSideBarSkeleton: React.FC<{}> = () => (
       <i>...</i> <br />
       <i>...</i> <br />
     </p>
-  </section>
+  </aside>
 );
 
 export default PodcastSideBar;
