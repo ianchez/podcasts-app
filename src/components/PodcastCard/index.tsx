@@ -34,19 +34,17 @@ const PodcastCard: React.FC<PodcastCardPropsType> = ({ podcast, onPodcastClick }
   );
 };
 
-export const PodcastCardSkeleton: React.FC<{}> = () => {
-  return (
-    <div className="podcast-item skeleton">
-      <span className="transparent" />
-      <div className="shifted-container">
-        <div className="image-container">
-          <div className="image" />
-        </div>
-        <h5>...</h5>
-        <p>...</p>
+export const PodcastCardSkeleton: React.FC<{}> = () => (
+  <div className="podcast-item skeleton">
+    <span className="transparent" />
+    <div className="shifted-container">
+      <div className="image-container">
+        <div className="image" />
       </div>
+      <h5>...</h5>
+      <p>...</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default PodcastCard;

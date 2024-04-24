@@ -28,17 +28,17 @@ h5 {
     transform: scale(1);
     opacity: 1;
   }
-  30% {
+  25% {
     transform: scale(1.1);
     opacity: 0.8;
   }
-  60% {
+  50% {
     transform: scale(1.4);
-    opacity: 1;
-  }
-  90% {
-    transform: scale(0.9);
     opacity: 0.6;
+  }
+  75% {
+    transform: scale(0.9);
+    opacity: 0.8;
   }
 }
 
@@ -48,5 +48,5 @@ h5 {
   height: 20px;
   border-radius: 50%;
   background-color: var(--color-light-blue);
-  animation: pulsate 1s infinite ease-in-out;
+  animation: pulsate 1.6s infinite ease-in-out;
 }
