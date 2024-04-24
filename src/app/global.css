@@ -1,5 +1,8 @@
 :root {
   --screen-top-padding: calc(60px + 2%);
+
+  --animation-loading-background: loadingBackground 2s infinite ease-in-out;
+  --animation-loading-color: loadingColor 2s infinite ease-in-out;
   
   --color-darker: #282c34;
   --color-shadow: rgba(0, 0, 0, 0.2);

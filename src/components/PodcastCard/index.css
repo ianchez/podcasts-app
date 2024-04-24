@@ -54,12 +54,12 @@
 .skeleton .image {
   height: 100%;
   background-color: var(--color-light-gray-border);
-  animation: loadingBackground 2s infinite ease-in-out;
+  animation: var(--animation-loading-background);
 }
 
 .skeleton h5 {
   color: var(--color-gray-text);
-  animation: loadingColor 2s infinite ease-in-out;
+  animation: var(--animation-loading-color);
 }
 
 .skeleton p {

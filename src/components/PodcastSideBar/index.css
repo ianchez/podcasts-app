@@ -51,13 +51,13 @@
 /* Skeleton */
 
 .skeleton #img-skeleton {
-  animation: loadingBackground 2s infinite ease-in-out;
+  animation: var(--animation-loading-background);
   height: 15vw;
   width: 15vw;
 }
 
 .skeleton h6 {
-  animation: loadingColor 2s infinite ease-in-out;
+  animation: var(--animation-loading-color);
 }
 
 .skeleton p {
