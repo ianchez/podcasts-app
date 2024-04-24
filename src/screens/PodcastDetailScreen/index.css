@@ -1,4 +1,4 @@
-.loading {
+#loading-episodes {
   animation: var(--animation-loading-color);
   width: 70%;
 }

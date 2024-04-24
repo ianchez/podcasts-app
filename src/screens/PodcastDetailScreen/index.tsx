@@ -38,7 +38,7 @@ const PodcastDetailScreen: React.FC<PodcastDetailScreenProps> = ({ children, id 
     return (
       <div className="row screen spaced">
         <PodcastSideBarSkeleton />
-        <h5 id="loading">Loading...</h5>
+        <h5 id="loading-episodes">Loading...</h5>
       </div>
     );
   } else {
