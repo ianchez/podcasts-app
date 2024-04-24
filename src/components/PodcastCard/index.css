@@ -35,11 +35,10 @@
   width: calc(100% - var(--podcast-img-margin-horizontal) * 2);
 }
 
-.podcast-item img {
+.podcast-item img, .skeleton .image {
   box-sizing: border-box;
   border: 1px solid var(--color-light-border);
   border-radius: 50%;
-  width: calc(100% - var(--podcast-img-margin-horizontal) * 2);
 }
 
 .podcast-item h5 {
@@ -51,3 +50,19 @@
   font-size: 0.7em;
   color: var(--color-gray-text);
 }
+
+.skeleton .image {
+  height: 100%;
+  background-color: var(--color-light-gray-border);
+  animation: loadingBackground 2s infinite ease-in-out;
+}
+
+.skeleton h5 {
+  color: var(--color-gray-text);
+  animation: loadingColor 2s infinite ease-in-out;
+}
+
+.skeleton p {
+  color: var(--color-light-gray-border);
+}
+

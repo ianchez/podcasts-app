@@ -6,12 +6,15 @@ import { Podcast } from 'src/constants/types';
 import './index.css';
 import SCREENS from '../../constants/screens';
 
-const useFilteredPodcasts = (podcasts: Podcast[], filter: string) =>
-  podcasts.filter(
+const useFilteredPodcasts = (podcasts: Podcast[], filter: string) => {
+  if (!filter) return podcasts;
+
+  return podcasts.filter(
     (podcast) =>
       podcast['im:name'].label.toLowerCase().includes(filter.toLowerCase()) ||
       podcast['im:artist'].label.toLowerCase().includes(filter.toLowerCase()),
   );
+};
 
 type PodcastListPropsType = {
   podcasts: Podcast[];
@@ -34,9 +37,9 @@ const PodcastList: React.FC<PodcastListPropsType> = ({
 
   return (
     <div id="podcasts-list-container">
-      {filteredPodcasts.map((podcast) => (
+      {filteredPodcasts.map((podcast, index) => (
         <PodcastComponent
-          key={podcast.id.attributes['im:id']}
+          key={podcast ? podcast.id.attributes['im:id'] : `podcast-${index}-card`}
           podcast={podcast}
           onPodcastClick={onPodcastClickHandler}
         />
