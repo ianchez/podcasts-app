@@ -1,0 +1,4 @@
+#loading {
+  animation: loadingColor 2s infinite ease-in-out;
+  width: 70%;
+}
