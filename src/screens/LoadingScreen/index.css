@@ -1,4 +1,3 @@
 .loading {
   animation: var(--animation-loading-color);
-  width: 70%;
 }

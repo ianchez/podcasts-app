@@ -1,6 +1,8 @@
+import './index.css';
+
 const LoadingScreen: React.FC<{}> = () => (
   <div className="screen">
-    <h4>Loading...</h4>
+    <h4 className="loading">Loading...</h4>
   </div>
 );
 
