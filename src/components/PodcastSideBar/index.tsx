@@ -46,4 +46,30 @@ const PodcastSideBar: React.FC<PodcastSideBarProps> = ({
   </section>
 );
 
+export const PodcastSideBarSkeleton: React.FC<{}> = () => (
+  <section id="side-bar-container" className="skeleton">
+    <div id="img-container">
+      <div id="img-skeleton" />
+    </div>
+
+    <hr />
+
+    <h6>Title ...</h6>
+    <p>
+      <i>By ...</i>
+    </p>
+
+    <hr />
+
+    <h6 id="description">Description:</h6>
+    <p>
+      <i>...</i> <br />
+      <i>...</i> <br />
+      <i>...</i> <br />
+      <i>...</i> <br />
+      <i>...</i> <br />
+    </p>
+  </section>
+);
+
 export default PodcastSideBar;

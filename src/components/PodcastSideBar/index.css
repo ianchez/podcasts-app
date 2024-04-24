@@ -19,7 +19,7 @@
   min-width: 190px;
 }
 
-#side-bar-container img {
+#side-bar-container img, #img-skeleton {
   border-radius: 3%;
 }
 
@@ -46,4 +46,20 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: pre-wrap;
+}
+
+/* Skeleton */
+
+.skeleton #img-skeleton {
+  animation: loadingBackground 2s infinite ease-in-out;
+  height: 15vw;
+  width: 15vw;
+}
+
+.skeleton h6 {
+  animation: loadingColor 2s infinite ease-in-out;
+}
+
+.skeleton p {
+  color: var(--color-light-gray-border)
 }
