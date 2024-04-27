@@ -1,16 +1,22 @@
-export const CORS_SERVICE_URL = process.env.CORS_SERVICE_URL ?? 'https://api.allorigins.win/raw';
+export const CORS_SERVICE_URL =
+  process.env.NEXT_PUBLIC_CORS_SERVICE_URL ?? 'https://api.allorigins.win/raw';
 
 const DEFAULT_LIMIT = {
   PODCASTS: Number(process.env.NEXT_PUBLIC_PODCASTS_LIMIT ?? 100),
-  EPISODES: Number(process.env.NEXT_PUBLIC_EPISODES_LIMIT ?? 20),
+  // Setting the default limit to 999999 because passing 0 will return only 1 episode,
+  // and avoiding the limit param will return only 50
+  EPISODES: Number(process.env.NEXT_PUBLIC_EPISODES_LIMIT ?? 999999),
 };
+
 export const PODCASTS_URL = (limit = DEFAULT_LIMIT.PODCASTS): string => {
   const podcastsUrl = process.env.NEXT_PUBLIC_ITUNES_PODCASTS_URL ?? '';
   return podcastsUrl.replace('{limit}', limit.toString());
 };
+
 export const PODCAST_DETAIL_URL = (id: string, limit = DEFAULT_LIMIT.EPISODES): string => {
-  const detailUrl = process.env.NEXT_PUBLIC_ITUNES_EPISODES_URL ?? '';
-  return detailUrl.replace('{id}', id).replace('{limit}', limit.toString());
+  let detailUrl = process.env.NEXT_PUBLIC_ITUNES_EPISODES_URL ?? '';
+  if (limit) detailUrl += `&limit=${limit}`;
+  return detailUrl.replace('{id}', id);
 };
 
 export const CACHE_TIME = process.env.NEXT_PUBLIC_CACHE_TIME_IN_MINUTES
