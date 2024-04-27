@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
@@ -6,6 +6,8 @@ import { formatDuration } from '../../utils/format';
 
 import './index.css';
 import SCREENS from '../../constants/screens';
+
+const ITEMS_PER_PAGE = 20;
 
 const useEpisodeNavigation = (podcastId: string) => {
   const { push } = useRouter();
@@ -23,10 +25,37 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
   const onEpisodeClickHandler = useEpisodeNavigation(podcastId);
   const { episodes } = useContext(PodcastDetailContext);
 
+  const totalPages = Math.ceil(episodes.length / ITEMS_PER_PAGE);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (nextPage: number) => {
+    if (nextPage < 1 || nextPage > totalPages) return;
+
+    setCurrentPage(nextPage);
+  };
+
+  const currentPageEpisodes = episodes.filter((_, index) => {
+    const pageStart = (currentPage - 1) * ITEMS_PER_PAGE;
+    const pageEnd = currentPage * ITEMS_PER_PAGE;
+    return index >= pageStart && index < pageEnd;
+  });
+
+  const itemsCountLabel = `${
+    currentPage * ITEMS_PER_PAGE > episodes.length ? episodes.length : currentPage * ITEMS_PER_PAGE
+  } / ${episodes.length}`;
+  const paginationLabel = `Page ${currentPage} / ${totalPages}`;
+
   return (
     <section id="episodes-list-container">
-      <div id="list-header">
+      <header id="list-header">
         <h5>Episodes: {episodes.length}</h5>
+        <p>{itemsCountLabel}</p>
+      </header>
+
+      <div id="pagination-controls">
+        <button onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
+        <p>{paginationLabel}</p>
+        <button onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
       </div>
 
       <div id="list-content">
@@ -39,7 +68,7 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
             </tr>
           </thead>
           <tfoot>
-            {episodes.map((episode) => (
+            {currentPageEpisodes.map((episode) => (
               <tr key={episode.trackId}>
                 <td className="pressable" onClick={() => onEpisodeClickHandler(episode.trackId)}>
                   {episode.trackName}
@@ -50,6 +79,12 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
             ))}
           </tfoot>
         </table>
+      </div>
+
+      <div id="pagination-controls">
+        <button onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
+        <p>{paginationLabel}</p>
+        <button onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
       </div>
     </section>
   );
