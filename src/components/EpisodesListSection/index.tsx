@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
 import { formatDuration } from '../../utils/format';
+import usePagination from '../../hooks/usePagination';
 
 import './index.css';
 import SCREENS from '../../constants/screens';
-
-const ITEMS_PER_PAGE = 20;
 
 const useEpisodeNavigation = (podcastId: string) => {
   const { push } = useRouter();
@@ -25,28 +24,23 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
   const onEpisodeClickHandler = useEpisodeNavigation(podcastId);
   const { episodes } = useContext(PodcastDetailContext);
 
-  const totalPages = Math.ceil(episodes.length / ITEMS_PER_PAGE);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (nextPage: number) => {
-    if (nextPage < 1 || nextPage > totalPages) return;
-
-    setCurrentPage(nextPage);
-  };
+  const {
+    currentPage,
+    itemsCountLabel,
+    itemsPerPage,
+    paginationLabel,
+    totalPages,
+    handlePageChange,
+  } = usePagination(episodes.length);
 
   const currentPageEpisodes = episodes.filter((_, index) => {
-    const pageStart = (currentPage - 1) * ITEMS_PER_PAGE;
-    const pageEnd = currentPage * ITEMS_PER_PAGE;
+    const pageStart = (currentPage - 1) * itemsPerPage;
+    const pageEnd = currentPage * itemsPerPage;
     return index >= pageStart && index < pageEnd;
   });
 
-  const itemsCountLabel = `${
-    currentPage * ITEMS_PER_PAGE > episodes.length ? episodes.length : currentPage * ITEMS_PER_PAGE
-  } / ${episodes.length}`;
-  const paginationLabel = `Page ${currentPage} / ${totalPages}`;
-
   const paginationControls = (
-    <div id="pagination-controls">
+    <div className="pagination-controls">
       <button disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)}>
         Previous Page
       </button>
