@@ -45,6 +45,21 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
   } / ${episodes.length}`;
   const paginationLabel = `Page ${currentPage} / ${totalPages}`;
 
+  const paginationControls = (
+    <div id="pagination-controls">
+      <button disabled={currentPage <= 1} onClick={() => handlePageChange(currentPage - 1)}>
+        Previous Page
+      </button>
+      <p>{paginationLabel}</p>
+      <button
+        disabled={currentPage >= totalPages}
+        onClick={() => handlePageChange(currentPage + 1)}
+      >
+        Next Page
+      </button>
+    </div>
+  );
+
   return (
     <section id="episodes-list-container">
       <header id="list-header">
@@ -52,11 +67,7 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
         <p>{itemsCountLabel}</p>
       </header>
 
-      <div id="pagination-controls">
-        <button onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
-        <p>{paginationLabel}</p>
-        <button onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
-      </div>
+      {paginationControls}
 
       <div id="list-content">
         <table>
@@ -81,11 +92,7 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
         </table>
       </div>
 
-      <div id="pagination-controls">
-        <button onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
-        <p>{paginationLabel}</p>
-        <button onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
-      </div>
+      {paginationControls}
     </section>
   );
 };
