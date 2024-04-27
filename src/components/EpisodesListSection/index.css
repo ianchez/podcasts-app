@@ -20,7 +20,7 @@
   width: 100%,
 }
 
-#pagination-controls {
+.pagination-controls {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-#pagination-controls button {
+.pagination-controls button {
   display: hidden;
   background-color: var(--color-light-border);
   border: none;
@@ -41,7 +41,7 @@
   padding: 0.5em 1em;
 }
 
-#pagination-controls button:disabled {
+.pagination-controls button:disabled {
   /* Using app background instead of display:none to avoid pagination-controls layout change */
   background-color: var(--app-background-color);
   box-shadow: none;
