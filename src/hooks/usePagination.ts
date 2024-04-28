@@ -1,5 +1,5 @@
 import { useState } from 'react';
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = Number(process.env.NEXT_PUBLIC_EPISODES_PER_PAGE) || 20;
 
 const usePagination = (itemsCount: number) => {
   const totalPages = Math.ceil(itemsCount / ITEMS_PER_PAGE);
