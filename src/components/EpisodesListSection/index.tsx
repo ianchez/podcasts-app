@@ -6,7 +6,6 @@ import { formatDuration } from 'src/utils/format';
 import usePagination from 'src/hooks/usePagination';
 
 import SCREENS from 'src/constants/screens';
-import { Episode } from 'src/constants/types';
 
 import './index.css';
 
@@ -22,7 +21,10 @@ const useEpisodesNavigation = (podcastId: string) => {
   };
 };
 
-const useEpisodesPagination = (episodes: Episode[]) => {
+const useEpisodesWithPagination = () => {
+  const { episodes } = useContext(PodcastDetailContext);
+  const episodesCount = episodes.length;
+
   const {
     currentPage,
     itemsCountLabel,
@@ -30,7 +32,7 @@ const useEpisodesPagination = (episodes: Episode[]) => {
     paginationLabel,
     totalPages,
     handlePageChange,
-  } = usePagination(episodes.length);
+  } = usePagination(episodesCount);
 
   const currentPageEpisodes = episodes.filter((_, index) => {
     const pageStart = (currentPage - 1) * itemsPerPage;
@@ -53,20 +55,19 @@ const useEpisodesPagination = (episodes: Episode[]) => {
     </div>
   );
 
-  return { currentPageEpisodes, itemsCountLabel, paginationControls };
+  return { currentPageEpisodes, episodesCount, itemsCountLabel, paginationControls };
 };
 
 const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => {
   const onEpisodeClickHandler = useEpisodesNavigation(podcastId);
-  const { episodes } = useContext(PodcastDetailContext);
 
-  const { currentPageEpisodes, itemsCountLabel, paginationControls } =
-    useEpisodesPagination(episodes);
+  const { currentPageEpisodes, episodesCount, itemsCountLabel, paginationControls } =
+    useEpisodesWithPagination();
 
   return (
     <section id="episodes-list-container">
       <header id="list-header">
-        <h5>Episodes: {episodes.length}</h5>
+        <h5>Episodes: {episodesCount}</h5>
         <p>{itemsCountLabel}</p>
       </header>
 
