@@ -11,9 +11,9 @@ const usePagination = (itemsCount: number) => {
     setCurrentPage(nextPage);
   };
 
-  const itemsCountLabel = `${
-    currentPage * ITEMS_PER_PAGE > itemsCount ? itemsCount : currentPage * ITEMS_PER_PAGE
-  } / ${itemsCount}`;
+  const pageMinCount = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+  const pageMaxCount = Math.min(currentPage * ITEMS_PER_PAGE, itemsCount);
+  const itemsCountLabel = `${pageMinCount} - ${pageMaxCount} / ${itemsCount}`;
   const paginationLabel = `Page ${currentPage} / ${totalPages}`;
 
   return {
