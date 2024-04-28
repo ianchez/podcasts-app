@@ -1,14 +1,16 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { PodcastDetailContext } from '../../contexts/PodcastDetailProvider';
-import { formatDuration } from '../../utils/format';
-import usePagination from '../../hooks/usePagination';
+import { PodcastDetailContext } from 'src/contexts/PodcastDetailProvider';
+import { formatDuration } from 'src/utils/format';
+import usePagination from 'src/hooks/usePagination';
+
+import SCREENS from 'src/constants/screens';
+import { Episode } from 'src/constants/types';
 
 import './index.css';
-import SCREENS from '../../constants/screens';
 
-const useEpisodeNavigation = (podcastId: string) => {
+const useEpisodesNavigation = (podcastId: string) => {
   const { push } = useRouter();
 
   if (!podcastId) return () => {};
@@ -20,10 +22,7 @@ const useEpisodeNavigation = (podcastId: string) => {
   };
 };
 
-const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => {
-  const onEpisodeClickHandler = useEpisodeNavigation(podcastId);
-  const { episodes } = useContext(PodcastDetailContext);
-
+const useEpisodesPagination = (episodes: Episode[]) => {
   const {
     currentPage,
     itemsCountLabel,
@@ -53,6 +52,16 @@ const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => 
       </button>
     </div>
   );
+
+  return { currentPageEpisodes, itemsCountLabel, paginationControls };
+};
+
+const EpisodesListSection: React.FC<{ podcastId: string }> = ({ podcastId }) => {
+  const onEpisodeClickHandler = useEpisodesNavigation(podcastId);
+  const { episodes } = useContext(PodcastDetailContext);
+
+  const { currentPageEpisodes, itemsCountLabel, paginationControls } =
+    useEpisodesPagination(episodes);
 
   return (
     <section id="episodes-list-container">
