@@ -31,6 +31,23 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - ***Eslint*** (for linting on local development)
 - ***Prettier*** (for code formatting)
 
+## Architecture
+
+The project is structured in a modular way, with separate directories for components, constants, contexts, hooks, providers, screens, services, and utilities.
+
+This makes the codebase easier to navigate and maintain. This also allows for better separation of concerns, reusability and easier testing.
+
+All of this will help for future expansion (scalability) or for changing technologies / implementations if needed.
+
+For state management I'm only using React Context API with useState hook combined with React-Query, this is enough for the size of the project by now, but if the project keeps growing we could combine it with useReducer hook or an external state management library like Redux.
+
+For fetching data I'm only using the Fetch API as a HTTP client, but again, if the project keeps growing or for better compatibility in older browsers I would recommend using Axios.
+The cache is handled by React-Query, allowing for better performance and less unnecessary fetching.
+
+Routing, Navigation handled by Next.js using the App router and the useRouter hook. The App router allows setting layouts for the whole app like the header, or for specific sections like the podcast detail sidebar.
+
+Testing is done with Jest and React Testing Library. The tests are located in the same directory as the component they are testing, this makes it easier to find and maintain the tests.
+
 ---
 
 ### Room for improvements
@@ -40,7 +57,6 @@ The app uses the [iTunes RSS Api](https://itunes.apple.com/us/rss/toppodcasts/li
 - Show more information about the podcast like genre, release date, etc.
 - Add additional filters like by author, genre, etc.
 - Add filters to the episode list
-- Add pagination to the podcast list and the episode list (API allows pagination)
 - Include other data sources like Spotify, Google Podcasts, etc.
 - Allow the user to add podcasts / episodes to a favorites list
 - Allow the user to create playlists
