@@ -5,7 +5,7 @@ const DEFAULT_LIMIT = {
   PODCASTS: Number(process.env.NEXT_PUBLIC_PODCASTS_LIMIT ?? 100),
 
   // Setting the default limit to 200 because thats the maximum limit allowed by the API
-  // setting it to 0 will return only 1 episode
+  // setting it to 0 will return only 1 element (the podcast detail)
   // and avoiding the limit param will return only 50
   // Check https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/Searching.html#//apple_ref/doc/uid/TP40017632-CH5-SW1
   EPISODES: Number(process.env.NEXT_PUBLIC_EPISODES_LIMIT ?? 200),
